@@ -71,8 +71,9 @@ class BookController extends Controller
     
     public function destroy(Book $book)
     {
-        $book->status = 'inativo';
-        $book->save();
+        $book->delete();
+        // $book->status = 'inativo';
+        // $book->save();
 
         return redirect()->route('books.index')->with('success', 'Livro removido com sucesso!');
     }
