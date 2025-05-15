@@ -2,18 +2,19 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Book;
+use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Book::class, function (Faker $faker) {
+$factory->define(\App\Book::class, function (Faker $faker) {
     return [
-        'title' => $faker->sentence(3),
+        
+        'title' => $faker->sentence,
         'author' => $faker->name,
         'publisher' => $faker->company,
         'year' => $faker->year,
         'isbn' => $faker->unique()->isbn13,
-        'quantity_total' => $total = $faker->numberBetween(1, 15),
-        'quantity_available' => $total,
-        'status' => 'ativo',
+        'quantity_total' => $faker->numberBetween(5, 20),
+        'quantity_available' => $faker->numberBetween(0, 20),
+        'status' => 'ativo'//$faker->randomElement(['ativo', 'inativo']),
     ];
 });
