@@ -14,6 +14,11 @@
 </div>
 
 <div class="mb-3">
+    <label for="description" class="form-label">Descrição</label>
+    <input type="text" class="form-control" name="description" value="{{ old('description', $book->description ?? '') }}" required>
+</div>
+
+<div class="mb-3">
     <label for="year" class="form-label">Ano</label>
     <input type="number" class="form-control" name="year" value="{{ old('year', $book->year ?? '') }}">
 </div>

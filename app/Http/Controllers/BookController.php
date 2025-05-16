@@ -27,6 +27,7 @@ class BookController extends Controller
             'title' => 'required|string|max:255',
             'author' => 'required',
             'publisher' => 'nullable|string',
+            'description'=> 'required|string|max:255',
             'year' => 'nullable|digits:4|integer',
             'isbn' => 'required|unique:books',
             'quantity_total' => 'required|integer|min:0',
@@ -58,6 +59,7 @@ class BookController extends Controller
             'title' => 'required|string|max:255',
             'author' => 'required',
             'publisher' => 'nullable|string',
+            'description'=> 'required|string|max:255',
             'year' => 'nullable|digits:4|integer',
             'isbn' => 'required|unique:books,isbn,' . $book->id,
             'quantity_total' => 'required|integer|min:0',
@@ -75,6 +77,6 @@ class BookController extends Controller
         // $book->status = 'inativo';
         // $book->save();
 
-        return redirect()->route('books.index')->with('success', 'Livro removido com sucesso!');
+        return redirect()->route('books.index')->with('success', 'Livro Excluído com sucesso!');
     }
 }
