@@ -20,7 +20,7 @@ class BookController extends Controller
         return view('books.create');
     }
 
-    
+    // we use object to receive, valid e manipul data via form
     public function store(Request $request)
     {
         $request->validate([
@@ -38,7 +38,7 @@ class BookController extends Controller
         Book::create($request->all());
 
         return redirect()->route('books.index')->with('success', 'Livro cadastrado com sucesso!');
-    }
+    } // Process and saveee
 
     
     public function show($id)
@@ -49,7 +49,7 @@ class BookController extends Controller
     
     public function edit(Book $book)
     {
-        return view('books.edit', compact('book'));
+        return view('books.edit', compact('book')); // c/ base n data selected
     }
 
     

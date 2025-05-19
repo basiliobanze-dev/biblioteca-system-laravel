@@ -13,9 +13,14 @@
     <input type="text" class="form-control" name="publisher" value="{{ old('publisher', $book->publisher ?? '') }}">
 </div>
 
-<div class="mb-3">
+<!-- <div class="mb-3">
     <label for="description" class="form-label">Descrição</label>
     <input type="text" class="form-control" name="description" value="{{ old('description', $book->description ?? '') }}" required>
+</div> -->
+
+<div class="mb-3">
+    <label for="description" class="form-label">Descrição</label>
+    <textarea class="form-control" name="description" id="description" rows="4" required>{{ old('description', $book->description ?? '') }}</textarea>
 </div>
 
 <div class="mb-3">
