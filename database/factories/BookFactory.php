@@ -15,6 +15,7 @@ $factory->define(\App\Book::class, function (Faker $faker) {
         'isbn' => $faker->unique()->isbn13,
         'quantity_total' => $faker->numberBetween(5, 20),
         'quantity_available' => $faker->numberBetween(0, 20),
-        'status' => 'ativo'//$faker->randomElement(['ativo', 'inativo']),
+        'status' => 'ativo', //$faker->randomElement(['ativo', 'inativo']),
+        'cover_image' => 'img'
     ];
 });

@@ -25,6 +25,7 @@ class CreateBooksTable extends Migration
             $table->unsignedInteger('quantity_total')->default(0);
             $table->unsignedInteger('quantity_available')->default(0);
             $table->enum('status', ['ativo', 'inativo'])->default('ativo');
+            $table->string('cover_image')->nullable();
 
             $table->timestamps();
         });

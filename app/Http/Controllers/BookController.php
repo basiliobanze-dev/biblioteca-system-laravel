@@ -20,10 +20,10 @@ class BookController extends Controller
         return view('books.create');
     }
 
-    // we use object to receive, valid e manipul data via form
+
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'author' => 'required',
             'publisher' => 'nullable|string',
@@ -31,14 +31,23 @@ class BookController extends Controller
             'year' => 'nullable|digits:4|integer',
             'isbn' => 'required|unique:books',
             'quantity_total' => 'required|integer|min:0',
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $request['quantity_available'] = $request['quantity_total'];
+        // we use object to receive, valid e manipul data via form
+        $validated['quantity_available'] = $validated['quantity_total'];
 
-        Book::create($request->all());
+        // Verif.. if a img was sent
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('public/covers');
+            $validated['cover_image'] = basename($path);
+        }
+
+        Book::create($validated);
 
         return redirect()->route('books.index')->with('success', 'Livro cadastrado com sucesso!');
     } // Process and saveee
+
 
     
     public function show($id)
@@ -63,6 +72,7 @@ class BookController extends Controller
             'year' => 'nullable|digits:4|integer',
             'isbn' => 'required|unique:books,isbn,' . $book->id,
             'quantity_total' => 'required|integer|min:0',
+            // 'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $book->update($request->all());

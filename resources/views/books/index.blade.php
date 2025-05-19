@@ -12,10 +12,10 @@
             <tr>
                 <th>Título</th>
                 <th>Autor</th>
-                <th>Editora</th>
+                <!-- <th>Editora</th> -->
                 <!-- <th>Description</th> -->
                 <th>Ano</th>
-                <th>ISBN</th>
+                <!-- <th>ISBN</th> -->
                 <th>Ações</th>
             </tr>
         </thead>
@@ -24,10 +24,10 @@
             <tr>
                 <td>{{ $book->title }}</td>
                 <td>{{ $book->author }}</td>
-                <td>{{ $book->publisher }}</td>
+                <!-- <td>{{ $book->publisher }}</td> -->
                 <!-- <td>{{ $book->description }}</td> -->
                 <td>{{ $book->year }}</td>
-                <td>{{ $book->isbn }}</td>
+                <!-- <td>{{ $book->isbn }}</td> -->
                 <td>
                     <a href="{{ route('books.show', $book) }}" class="btn btn-sm btn-view"><i class="fas fa-eye"></i></a>
                     <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>

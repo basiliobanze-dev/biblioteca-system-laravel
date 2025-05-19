@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="{{ route('books.store') }}">
+<form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data">
     @csrf
     @include('books.form')
 </form>
