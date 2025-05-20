@@ -273,12 +273,9 @@ header i {
 
 
 
-
-
-
-
+/* DETAILS */
 .book-details-container {
-    position: relative; /* necessário para o posicionamento absoluto interno */
+    position: relative;
     display: flex;
     gap: 40px;
     background: #f7f9fc;
@@ -288,7 +285,7 @@ header i {
     max-width: 900px;
     margin: 40px auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 400px; /* para garantir espaço para o botão */
+    min-height: 400px; 
 }
 
 .book-cover img {
@@ -341,7 +338,7 @@ header i {
 
 
 /* Responsivo */
-@media(max-width: 700px) {
+/* @media(max-width: 700px) {
     .book-details-container {
         flex-direction: column;
         max-width: 100%;
@@ -358,4 +355,4 @@ header i {
     .book-info h2 {
         font-size: 1.6rem;
     }
-}
+} */
