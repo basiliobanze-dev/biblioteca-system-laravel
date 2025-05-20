@@ -1,6 +1,5 @@
 <div class="form-container">
-
-        <!-- Coluna 1 -->
+        <!-- c1 -->
         <div>
             <div class="form-group">
                 <label for="title" class="form-label">Título</label>
@@ -23,7 +22,7 @@
             </div>
         </div>
 
-        <!-- Coluna 2 -->
+        <!-- c2 -->
         <div>
             <div class="form-group">
                 <label for="year" class="form-label">Ano</label>
@@ -42,8 +41,24 @@
 
             <div class="form-group">
                 <label for="cover_image" class="form-label">Foto da Capa</label>
-                <input type="file" id="cover_image" name="cover_image" class="form-input-file" accept="image/*">
+
+                <div class="cover-file-container">
+                    {{-- Capa atual --}}
+                    @if (!empty($book->cover_image))
+                        <div class="cover-preview">
+                            <img src="{{ asset('storage/covers/' . $book->cover_image) }}"
+                                alt="Capa do livro"
+                                class="cover-image-preview-small">
+                        </div>
+                    @else
+                        <p class="no-cover">Sem capa.</p>
+                    @endif
+
+                    {{-- Botão de escolher novo ficheiro --}}
+                    <input type="file" id="cover_image" name="cover_image" class="form-input-file" accept="image/*">
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -51,3 +66,7 @@
         <button type="submit" class="btn-save">Salvar</button>
         <a href="{{ route('books.index') }}" class="btn-back">Voltar</a>
     </div>
+
+
+
+    
