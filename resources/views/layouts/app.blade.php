@@ -12,7 +12,7 @@
     <div style="height: 50px; background-color: #1d2a3a;"></div>
 
     <div class="text-center bg-white border-bottom" style="padding: 20px 0;">
-        <h4 class="m-0">GESTÃO DE LIVROS</h4>
+        <h4 class="m-0">BIBLIOTECA ONLINE</h4>
     </div>
 
     @include('partials.header')

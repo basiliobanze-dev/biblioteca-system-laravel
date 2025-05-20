@@ -270,3 +270,92 @@ header i {
     border-color: #fff !important; /* Força cor da borda */
     text-decoration: none !important; /* Remove sublinhado dos links */
 }
+
+
+
+
+
+
+
+.book-details-container {
+    position: relative; /* necessário para o posicionamento absoluto interno */
+    display: flex;
+    gap: 40px;
+    background: #f7f9fc;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px #2C3E50;
+    max-width: 900px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 400px; /* para garantir espaço para o botão */
+}
+
+.book-cover img {
+    width: 250px;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px #2C3E50;
+    object-fit: cover;
+}
+
+.book-info {
+    flex: 1;
+}
+
+.book-info h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #3a4d5f;
+}
+
+.book-info p {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #3a4d5f;
+}
+
+.book-info p strong {
+    color: #2C3E50;
+}
+
+.btn-back2 {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-back2:hover {
+    background-color: #354758;
+}
+
+
+/* Responsivo */
+@media(max-width: 700px) {
+    .book-details-container {
+        flex-direction: column;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .book-cover img {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .book-info h2 {
+        font-size: 1.6rem;
+    }
+}

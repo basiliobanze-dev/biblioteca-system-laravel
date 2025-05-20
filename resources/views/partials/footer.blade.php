@@ -28,6 +28,6 @@
     </div>
 
     <div style="text-align: center; margin-top: 40px; font-size: 13px; color: #bdc3c7;">
-        &copy; {{ date('Y') }} Minha Biblioteca. Todos os direitos reservados.
+        &copy; {{ date('Y') }} Biblioteca Online. Todos os direitos reservados.
     </div>
 </footer>

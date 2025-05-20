@@ -63,7 +63,6 @@
                 <label for="cover_image" class="form-label">Foto da Capa</label>
 
                 <div class="cover-file-container">
-                    {{-- Capa atual --}}
                     @if (!empty($book->cover_image))
                         <div class="cover-preview">
                             <img src="{{ asset('storage/covers/' . $book->cover_image) }}"
@@ -74,7 +73,6 @@
                         <p class="no-cover">Sem capa.</p>
                     @endif
 
-                    {{-- Botão de escolher novo ficheiro --}}
                     <input type="file" id="cover_image" name="cover_image" class="form-input-file" accept="image/*">
                 </div>
             </div>
