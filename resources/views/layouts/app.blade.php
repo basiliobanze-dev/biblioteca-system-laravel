@@ -21,8 +21,10 @@
          @yield('content') <!-- container to exib content of the views  -->
     </div>
 
+    @include('partials.footer')
 
-    {{-- Sidebar de navegação --}}
+
+    <!-- Sidebar nav -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="menuSidebar" aria-labelledby="menuSidebarLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="menuSidebarLabel">Menu</h5>
@@ -30,7 +32,7 @@
         </div>
         <div class="offcanvas-body">
             <ul class="list-unstyled">
-                <!-- <li><a href="{{ route('books.create') }}" class="nav-link">Cadastrar Livro</a></li> -->
+                <li><a href="{{ route('books.index') }}" class="nav-link">- Livros</a></li>
                 
             </ul>
         </div>

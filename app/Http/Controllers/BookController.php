@@ -8,9 +8,20 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::where('status', 'ativo')->paginate(10);
+        $query = Book::query();
+
+        if ($search = $request->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                ->orWhere('author', 'like', "%{$search}%")
+                ->orWhere('year', 'like', "%{$search}%");
+            });
+        }
+
+        $books = $query->paginate(10)->appends($request->only('search'));
+
         return view('books.index', compact('books'));
     }
 
@@ -31,6 +42,7 @@ class BookController extends Controller
             'year' => 'nullable|digits:4|integer',
             'isbn' => 'required|unique:books',
             'quantity_total' => 'required|integer|min:0',
+            'status' => 'required|in:ativo,inativo',
             'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -72,6 +84,7 @@ class BookController extends Controller
             'year' => 'nullable|digits:4|integer',
             'isbn' => 'required',
             'quantity_total' => 'required|integer|min:0',
+            'status' => 'required|in:ativo,inativo',
             'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

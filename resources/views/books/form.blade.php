@@ -1,4 +1,4 @@
-<div class="form-container">
+<div class="form-container" style="margin-TOP: 60px;">    
         <!-- c1 -->
         <div>
             <div class="form-group">
@@ -34,9 +34,29 @@
                 <input type="text" id="isbn" name="isbn" class="form-input" value="{{ old('isbn', $book->isbn ?? '') }}" required>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="quantity_total" class="form-label">Quantidade</label>
                 <input type="number" id="quantity_total" name="quantity_total" class="form-input" value="{{ old('quantity_total', $book->quantity_total ?? '') }}" required>
+            </div> -->
+
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="quantity_total" class="form-label">Quantidade</label>
+                    <input type="number" id="quantity_total" name="quantity_total" class="form-input" value="{{ old('quantity_total', $book->quantity_total ?? '') }}" required>
+                
+                    @error('quantity_total')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="status" class="form-label">Estado</label>
+
+                    <select id="status" name="status" class="form-input">
+                        <option value="ativo" {{ old('status', $book->status ?? '') === 'ativo' ? 'selected' : '' }}>Ativo</option>
+                        <option value="inativo" {{ old('status', $book->status ?? '') === 'inativo' ? 'selected' : '' }}>Inativo</option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-group">
@@ -62,10 +82,12 @@
         </div>
     </div>
 
-    <div class="form-actions">
+    <div class="form-actions" style="margin-bottom: 120px;">
         <button type="submit" class="btn-save">Salvar</button>
         <a href="{{ route('books.index') }}" class="btn-back">Voltar</a>
     </div>
+
+</div>
 
 
 
