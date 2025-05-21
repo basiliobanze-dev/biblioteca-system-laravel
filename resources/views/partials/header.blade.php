@@ -11,6 +11,9 @@
         case 'books.edit':
             $pageTitle = 'Editar Livros';
             break;
+        case 'books.show':
+            $pageTitle = 'Detalhes do Livro';
+            break;
         default:
             $pageTitle = 'Livros';
     }

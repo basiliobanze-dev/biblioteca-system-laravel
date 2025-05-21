@@ -2,7 +2,7 @@
     <div class="container" style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
         
         <div style="flex: 1; min-width: 220px; text-align: left;">
-            <h4 style="margin-bottom: 15px;">📚 Minha Biblioteca</h4>
+            <h4 style="margin-bottom: 15px;">📚 Biblioteca Online</h4>
             <p style="font-size: 14px; line-height: 1.6;">
                 Gestão de livros com facilidade, elegância e eficiência.
             </p>
