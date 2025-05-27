@@ -33,7 +33,7 @@
         <div class="offcanvas-body">
             <ul class="list-unstyled">
                 <li><a href="{{ route('books.index') }}" class="nav-link">- Livros</a></li>
-                
+                <li><a href="{{ route('users.index') }}" class="nav-link">- Usuários</a></li>
             </ul>
         </div>
     </div>

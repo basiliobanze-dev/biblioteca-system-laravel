@@ -74,11 +74,11 @@
 .table th {
   background-color: #2c3e50;
   color: white;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .table td, .table th {
-  text-align: center;
+  /* text-align: center; */
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
@@ -260,6 +260,10 @@ header i {
     margin-right: 10px;
     text-align: center
 }
+.no-cover2 {
+    font-style: italic;
+    color: #888;
+}
 
 
 
@@ -337,22 +341,93 @@ header i {
 }
 
 
-/* Responsivo */
-/* @media(max-width: 700px) {
-    .book-details-container {
-        flex-direction: column;
-        max-width: 100%;
-        padding: 20px;
-    }
 
-    .book-cover img {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-        display: block;
-    }
 
-    .book-info h2 {
-        font-size: 1.6rem;
-    }
+
+.user-form-container {
+    background-color: #2c3e50;
+    padding: 30px;
+    max-width: 500px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px #2c3e50;
+    color: #fff;
+}
+
+.user-form-group {
+    margin-bottom: 20px;
+}
+
+.user-form-input,
+.user-form-select {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.user-form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 24px;
+    background-color: #fff;
+}
+
+/* .user-form-submit,
+.user-form-cancel {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    margin: 0 5px;
+    cursor: pointer;
 } */
+
+.user-form-errors {
+    background-color: #e74c3c;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+/* btns of form */
+.user-form-save {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.user-form-back {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-save:hover {
+    background-color: #354758;
+}
+
+.btn-back:hover {
+    background-color: #778088;
+}
+
+.user-form-actions {
+    text-align: center;
+    margin-bottom: 120px;
+    margin-top: -30px;
+}

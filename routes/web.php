@@ -17,3 +17,8 @@ Route::get('/', function () {
 
 // Route::resource('books', App\Http\Controllers\BookController::class);
 Route::resource('books', BookController::class);
+
+Route::resource('users', UserController::class);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

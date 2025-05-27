@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role', 
     ];
 
     /**
@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Methd to return the name transla..
+    public function getRoleLabelAttribute()
+    {
+        switch ($this->role) {
+            case 'admin':
+                return 'Administrador';
+            case 'librarian':
+                return 'Bibliotecário';
+            case 'reader':
+                return 'Leitor';
+            default:
+                return ucfirst($this->role);
+        }
+    }
 }
