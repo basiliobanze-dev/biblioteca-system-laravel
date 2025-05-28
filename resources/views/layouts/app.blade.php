@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/books.css') }}">
     <link rel="stylesheet" href="{{ asset('css/users.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/side-bar.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -33,20 +34,19 @@
         </div>
         <div class="offcanvas-body">
             <ul class="list-unstyled">
-                <li><a href="{{ route('books.index') }}" class="nav-link">- Livros</a></li>
-                <li><a href="{{ route('users.index') }}" class="nav-link">- Usuários</a></li>
-
-                 @auth
+                <li><a href="{{ route('home') }}" class="nav-link"><i class="fa-solid fa-house"></i> Início</a></li>
+                <li><a href="{{ route('books.index') }}" class="nav-link"><i class="fa-solid fa-book"></i> Livros</a></li>
+                <li><a href="{{ route('users.index') }}" class="nav-link"><i class="fa-solid fa-users"></i> Usuários</a></li>
+                @auth
                 <li>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="nav-link btn btn-link text-start w-100" style="text-decoration: none; color: #1d2a3a;">
-                            <!-- <i class="fas fa-sign-out-alt me-1"></i> -->- Sair
+                        <button type="submit" class="nav-link btn btn-link text-start w-100">
+                            <i class="fas fa-sign-out-alt"></i> Sair
                         </button>
                     </form>
                 </li>
                 @endauth
-            
             </ul>
         </div>
     </div>

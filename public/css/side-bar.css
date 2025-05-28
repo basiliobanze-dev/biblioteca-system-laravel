@@ -1,0 +1,48 @@
+.offcanvas-body {
+    background-color: white;
+    padding: 20px;
+}
+
+.offcanvas-title {
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 5px;
+}
+
+.offcanvas-body ul {
+    padding-left: 0;
+    margin: 0;
+}
+
+.offcanvas-body ul li {
+    margin-bottom: 15px;
+}
+
+.offcanvas-body .nav-link {
+    color: #2c3e50;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s, padding-left 0.3s;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.offcanvas-body .nav-link i {
+    width: 24px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.offcanvas-body .nav-link:hover {
+    background-color: #e3f2fd;
+    padding-left: 16px;
+    text-decoration: none;
+}
+
+.offcanvas-body .btn-link {
+    color: #2c3e50;
+}

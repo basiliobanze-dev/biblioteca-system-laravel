@@ -7,7 +7,7 @@
 
             <form method="GET" action="{{ route('users.index') }}" class="search-form d-flex">
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Pesquisar por nome ou email..." class="search-input form-control form-control-sm">
-                <button type="submit" class="search-button btn btn-primary btn-sm ml-2">Pesquisar</button>
+                <button type="submit" class="search-button btn btn-sm ml-2">Pesquisar</button>
             </form>
         </div>
 

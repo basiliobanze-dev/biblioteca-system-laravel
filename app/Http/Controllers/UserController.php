@@ -40,7 +40,7 @@ class UserController extends Controller
         User::create([
             'name'     => $request->name,
             'email'    => $request->email,
-            'password' => bcrypt('123456'), // Senha padrão para não quebrar a inserção
+            'password' => bcrypt('123456'),
             'role'     => $request->role,
         ]);
 

@@ -21,9 +21,9 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
-    Route::resource('books', BookController::class);
+    Route::resource('books', BookController::class)->middleware(['auth', 'isAdmin']);
     
-    Route::resource('users', UserController::class);
+    Route::resource('users', 'UserController')->middleware(['auth', 'isAdmin']);
 });
 
 
