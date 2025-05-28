@@ -15,10 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('books', App\Http\Controllers\BookController::class);
-Route::resource('books', BookController::class);
-
-Route::resource('users', UserController::class);
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    Route::resource('books', BookController::class);
+    
+    Route::resource('users', UserController::class);
+});
+
+

@@ -1,0 +1,111 @@
+/* Fundo da página */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #263544;
+    font-family: Arial, sans-serif;
+}
+
+/* Centralização da estrutura */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 20px;
+}
+
+/* Parte de cima com ícone e saudação */
+.login-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 85px;
+}
+
+
+.welcome-text {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Caixa branca do login */
+.login-box {
+    background-color: white;
+    padding: 30px 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 0 15px rgb(168, 168, 168);
+    text-align: center;
+}
+
+.login-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #263544;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #263544;
+    font-size: 14px;
+}
+
+button {
+    padding: 12px;
+    background-color: #263544;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #354758;
+}
+
+/* Rodapé com links */
+.login-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 360px;
+    font-size: 13px;
+    padding: 0 5px;
+}
+
+.login-footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+.forgot-info {
+  text-align: center;
+  font-size: 1rem;
+  color: #263544;
+  margin-bottom: 20px;
+}

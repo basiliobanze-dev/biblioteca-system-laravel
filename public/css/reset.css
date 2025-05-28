@@ -1,0 +1,70 @@
+.reset-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-color: #263544;
+}
+
+.reset-wrapper {
+  background: white;
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(168, 168, 168);
+}
+
+.reset-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #263544;
+}
+
+.reset-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reset-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.reset-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.reset-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.reset-error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.reset-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.reset-btn {
+  padding: 10px 20px;
+  background-color: #263544;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background-color: #354758;
+}
