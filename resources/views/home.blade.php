@@ -13,6 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    
+                    @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
 
                     <h3>Bem-vindo, {{ Auth::user()->name }} 👋</h3>
                     <p class="lead mt-3">Você está logado como <strong>{{ Auth::user()->role_label }}</strong>.</p>

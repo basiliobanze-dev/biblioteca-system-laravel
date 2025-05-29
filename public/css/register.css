@@ -45,7 +45,7 @@ body {
     width: 100%;
     max-width: 360px;
     text-align: center;
-    box-shadow: 0 0 15px rgb(168, 168, 168);
+    box-shadow: 0 0 15px rgb(139, 139, 139);
 }
 
 .register-box h2 {
@@ -62,7 +62,7 @@ form {
 
 input {
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #263544;
     border-radius: 5px;
     font-size: 14px;
 }

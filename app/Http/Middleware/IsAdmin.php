@@ -14,13 +14,22 @@ class IsAdmin
      * @return mixed
      */
     
+    // public function handle($request, Closure $next)
+    // {
+    //     if (auth()->check() && auth()->user()->role === 'admin') {
+    //         return $next($request);
+    //     }
+
+    //     return redirect('/')->with('error', 'Acesso não autorizado.');
+    // }
+    
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->role === 'admin') {
+        if (auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role === 'librarian')) {
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'Acesso não autorizado.');
+        abort(403, 'Acesso não autorizado.');
     }
 
 }
