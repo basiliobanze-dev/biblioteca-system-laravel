@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div style="margin-bottom: 120px;">
-        <div class="table-header d-flex justify-content-between align-items-center mb-3" style="margin-top: 60px;">
+    <div>
+        <div class="table-header d-flex justify-content-between align-items-center mb-3">
             <a href="{{ route('users.create') }}" class="btn btn-add mb-3">Adicionar Usuário</a>
 
             <form method="GET" action="{{ route('users.index') }}" class="search-form d-flex">
@@ -29,8 +29,8 @@
             <tbody>
                 @foreach ($users as $user)
                     <tr>
-                        <td style="width: 350px">{{ $user->name }}</td>
-                        <td style="width: 500px">{{ $user->email }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>{{ $user->role_label }}</td>
                         <td>
                             <a href="{{ route('users.show', $user) }}" class="btn btn-sm btn-view"><i class="fas fa-eye"></i></a>

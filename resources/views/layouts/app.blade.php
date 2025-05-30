@@ -1,56 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <title>Biblioteca</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/books.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/users.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/side-bar.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Biblioteca</title>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('css/books.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/users.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/side-bar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    </head>
 
-<body>
-    <div style="height: 50px; background-color: #1d2a3a;"></div>
+    <body>
+        @include('partials.header')
 
-    <div class="text-center bg-white border-bottom" style="padding: 20px 0; color: #1d2a3a">
-        <h4 class="m-0"><i class="fa-solid fa-book" style="color: #1d2a3a"></i> BIBLIOTECA ONLINE</h4>
-    </div>
-
-    @include('partials.header')
-
-    <div class="container mt-4">
-         @yield('content') <!-- container to exib content of the views  -->
-    </div>
-
-    @include('partials.footer')
-
-
-    <!-- Sidebar nav -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="menuSidebar" aria-labelledby="menuSidebarLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="menuSidebarLabel">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        <div class="container mt-4">
+            @yield('content') <!-- container to exib content of the views  -->
         </div>
-        <div class="offcanvas-body">
-            <ul class="list-unstyled">
-                <li><a href="{{ route('home') }}" class="nav-link"><i class="fa-solid fa-house"></i> Início</a></li>
-                <li><a href="{{ route('books.index') }}" class="nav-link"><i class="fa-solid fa-book"></i> Livros</a></li>
-                <li><a href="{{ route('users.index') }}" class="nav-link"><i class="fa-solid fa-users"></i> Usuários</a></li>
-                @auth
-                <li>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="nav-link btn btn-link text-start w-100">
-                            <i class="fas fa-sign-out-alt"></i> Sair
-                        </button>
-                    </form>
-                </li>
-                @endauth
-            </ul>
-        </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        @include('partials.footer')
+
+        @include('partials.side-bar')
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>

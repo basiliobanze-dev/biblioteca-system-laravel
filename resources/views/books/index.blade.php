@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div style="margin-bottom: 120px;">
-        <div class="table-header d-flex justify-content-between align-items-center mb-3" style="margin-top: 60px;">
+    <div>
+        <div class="table-header d-flex justify-content-between align-items-center mb-3">
             <a href="{{ route('books.create') }}" class="btn btn-add mb-3">Adicionar Livro</a>
 
             <form method="GET" action="{{ route('books.index') }}" class="search-form d-flex">
@@ -41,7 +41,7 @@
                                 <p class="no-cover2">Sem capa.</p>
                             @endif
                         </td>
-                        <td style="width: 500px">{{ $book->title }}</td>
+                        <td>{{ $book->title }}</td>
                         <td>{{ $book->author }}</td>
                         <!-- <td>{{ $book->publisher }}</td> -->
                         <!-- <td>{{ $book->description }}</td> -->

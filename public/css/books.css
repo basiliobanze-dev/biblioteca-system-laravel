@@ -1,31 +1,61 @@
-/* h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #2c3e50;
-  text-align: center;
-  margin-bottom: 20px;
-} */
+body {
+  background-image: url('/imagens/livros-bg.png'); /* imagem de livros ou padrão de ícones */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: #F8F9FA;
+  color: #F1F1F1;
+}
 
-/* .content {
-    margin-bottom: 50PX;
-} */
 
-/* btn add book */
+/* GERAL STYLES FOR (Books e Users) */
+header {
+    border-bottom: 5px solid #2c3e50;
+}
+
+header i {
+    cursor: pointer;
+}
+
+.page-link {
+    color: #fff !important;
+    background-color: #1D2A3A !important;
+    border-color: #fff !important;
+    text-decoration: none !important;
+}
+
+.page-link:focus {
+    outline: none;
+    box-shadow: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 191, 166, 0.25);
+}
+
+/* VIEWS CONTAINER */
+.container.mt-4 {
+    padding: 60px 60px;  /* espaço interno: cima/baixo 30px, lados 40px */
+    margin-top: 40px;    /* espaço externo acima */
+    margin-bottom: 160px;    /* espaço externo acima */
+}
+
+/* BUTTON "Add" */
 .btn-add.mb-3 {
-  background-color: #2c3e50;
+  background-color: #00BFA6;
   border: none;
   display: inline-flex;
   align-items: center;
   gap: 5px;
   font-weight: bold;
   padding: 8px 15px;
-  color: white;
+
+  color: #F8F9FA !important;
+  outline: none;
+  box-shadow: none;
+  text-decoration: none;
 }
 
-/* whean i'm passing cursor */
 .btn-add.mb-3:hover {
-  background-color: #354758;
-  color: white;
+  background-color: #00A08F;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
@@ -36,9 +66,7 @@
   font-weight: 900;
 }
 
-
-
-/* search form */
+/* SEARCH FORM */
 .search-form {
     display: flex;
     gap: 10px;
@@ -51,12 +79,19 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 250px;
+    border-color: #00BFA6;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 191, 166, 0.25);
+    border-color: #00BFA6;
 }
 
 .search-button {
   padding: 8px 15px;
-  background-color: #2c3e50 !important;
-  color: white !important;
+  background-color: #00BFA6 !important;
+  color: #F8F9FA !important;
   border: none !important;
   border-radius: 5px;
   cursor: pointer;
@@ -73,34 +108,29 @@
 .search-button:hover,
 .search-button:focus,
 .search-button:active {
-  background-color: #354758 !important;
-  color: white !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
-  outline: none !important;
-  border: none !important;
-  text-decoration: none !important;
+    background-color: #00A08F !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
+button.search-button,
+.search-button:focus,
+.search-button:active,
+.search-button:visited,
+.search-button:focus:active {
+    color: #F8F9FA !important;
+}
 
-
-
-
-/* list book table */
+/* BOOKS TABLE */
 .table th {
-  background-color: #2c3e50;
-  color: white;
-  /* text-align: center; */
+  background-color: #1D2A3A;
+  color: #00BFA6;
 }
 
 .table td, .table th {
-  /* text-align: center; */
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #00BFA6;
 }
 
-
-
-/* actions */
 .table td .btn {
   margin: 0 2px;
   padding: 5px 8px;
@@ -111,58 +141,34 @@
 }
 
 .btn-view {
-  background-color: #34495e;
-  color: white;
+  background-color: #263442;    
 }
-
 .btn-edit {
   background-color: #f1c40f;
-  color: white;
 }
-
 .btn-remove {
   background-color: #e74c3c;
-  color: white;
 }
 
-/* when im passing cursor */
 .btn-view:hover {
-  background-color: #2c3e50;
-  color: white;
+  background-color: #1f2a35;
 }
-
 .btn-edit:hover {
   background-color: #d4ac0d;
-  color: white;
 }
-
 .btn-remove:hover {
   background-color: #c0392b;
-  color: white;
 }
 
-
-
-/* header */
-header {
-    border-bottom: 5px solid #2c3e50;
-}
-
-header i {
-    cursor: pointer;
-}
-
-
-
-/* form book */
+/* BOOKS FORM */
 .form-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    background: #2c3e50;
+    background: #1d2a3a;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0px 4px 6px #2c3e50;
+    box-shadow: 0px 4px 6px #1d2a3a;
 }
 
 .form-group {
@@ -172,8 +178,7 @@ header i {
 
 .form-label {
     margin-bottom: 8px;
-    /* font-weight: bold; */
-    color: #ffffff;
+    color: #00BFA6;
 }
 
 .form-input,
@@ -193,8 +198,8 @@ header i {
 .form-input:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: #89daff;
-    background-color: #F9F9F9;
+    border-color: #00BFA6;
+    background-color: #f9f9f9;
 }
 
 .form-actions {
@@ -214,42 +219,38 @@ header i {
     min-width: 150px;
 }
 
-
-/* btns of form */
+/* FORM BUTTONS */
 .btn-save {
-    background-color: #2c3e50;
-    color: white;
+    background-color: #00BFA6;
+    color: #FFFFFF;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
 .btn-back {
-    background-color: #6c757d;
-    color: white;
-    border: none;
+    background-color: #F0F4F5;
+    color: #37474F;
+    border: 1px solid #CFD8DC;
     padding: 10px 20px;
     border-radius: 5px;
     margin-left: 10px;
     cursor: pointer;
     font-size: 14px;
     text-decoration: none;
-    display: inline-block;
 }
 
 .btn-save:hover {
-    background-color: #354758;
+    background-color: #009C8B;
 }
 
 .btn-back:hover {
-    background-color: #778088;
+    background-color: #E0F7F5;
 }
 
-
-
-/* img-cover and choose file cover */
+/* COVER IMG */
 .cover-file-container {
     display: flex;
     align-items: center;
@@ -273,45 +274,34 @@ header i {
     font-style: italic;
     color: #888;
     margin-right: 10px;
-    text-align: center
+    text-align: center;
 }
 .no-cover2 {
     font-style: italic;
     color: #888;
 }
 
-
-
-/* costuming pagination of laravel */
-.page-link {
-    color: #fff !important; /* Força a cor do texto */
-    background-color: #899097 !important; /* Força cor de fundo */
-    border-color: #fff !important; /* Força cor da borda */
-    text-decoration: none !important; /* Remove sublinhado dos links */
-}
-
-
-
-/* DETAILS */
+/* BOOKS DETAIL */
 .book-details-container {
     position: relative;
     display: flex;
     gap: 40px;
     background: #f7f9fc;
     padding: 30px;
+    border: 1px solid #1D2A3A;
     border-radius: 12px;
-    box-shadow: 0 8px 20px #2C3E50;
+    box-shadow: 0 1px 20px #3a4d5f;
     max-width: 900px;
     margin: 40px auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 400px; 
+    min-height: 400px;
 }
 
 .book-cover img {
     width: 310px;
     height: 500px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px #2C3E50;
+    box-shadow: 0 4px 10px #2c3e50;
     object-fit: cover;
 }
 
@@ -322,7 +312,7 @@ header i {
 .book-info h2 {
     margin-bottom: 20px;
     font-size: 2rem;
-    color: #3a4d5f;
+    color: #1ABC9C;
 }
 
 .book-info p {
@@ -332,29 +322,22 @@ header i {
 }
 
 .book-info p strong {
-    color: #2C3E50;
+    color: #1D2A3A;
 }
 
 .btn-back2 {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: #2c3e50;
-    color: white;
-    border: none;
+    background-color: #F0F4F5;
+    color: #37474F;
+    border: 1px solid #1ABC9C;
     padding: 10px 20px;
     border-radius: 5px;
-    margin-left: 10px;
     cursor: pointer;
-    font-size: 14px;
     text-decoration: none;
-    display: inline-block;
 }
 
 .btn-back2:hover {
-    background-color: #354758;
+    background-color: #E0F7F5;
 }
-
-
-
-

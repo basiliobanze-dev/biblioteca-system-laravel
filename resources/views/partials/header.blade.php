@@ -32,14 +32,23 @@
     }
 @endphp
 
+<div>
+    <div class="top-bar"></div>
 
-<div style="background-color:rgb(196, 196, 196); border-bottom: 2px solid #1d2a3a; border-top: 2px solid #1d2a3a;">
+    <div class="header text-center bg-white border-bottom">
+        <h4 class="m-0">
+            <i class="fa-solid fa-book icon-color"></i> BIBLIOTECA ONLINE
+        </h4>
+    </div>
+</div>
+
+<div class="menu-bar">
     <div class="container-fluid py-2 d-flex align-items-center">
-        
+
         <button class="btn p-0 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuSidebar" aria-controls="menuSidebar">
-            <i class="fas fa-bars fa-lg" style="color: #1d2a3a;"></i>
+            <i class="fas fa-bars fa-lg icon-color"></i>
         </button>
 
-        <span class="fw-semibold" style="color: #1d2a3a;">{{ $pageTitle }}</span>
+        <span class="fw-semibold text-primary-custom">{{ $pageTitle }}</span>
     </div>
 </div>

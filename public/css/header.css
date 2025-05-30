@@ -1,0 +1,23 @@
+.top-bar {
+    height: 50px;
+    background-color: #1d2a3a;
+}
+
+.header {
+    padding: 20px 0;
+    color: #1ABC9C;
+}
+
+.icon-color {
+    color: #1ABC9C;
+}
+
+.menu-bar {
+    background-color: #1d2a3a;
+    border-top: 2px solid #00BFA6;
+    border-bottom: 2px solid #00BFA6;
+}
+
+.text-primary-custom {
+    color: #F8F9FA;
+}

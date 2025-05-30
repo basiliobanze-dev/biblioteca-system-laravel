@@ -19,6 +19,7 @@
             <p><strong>Estado:</strong> {{ ucfirst($book->status) }}</p>
             <p><strong>Quantidade total:</strong> {{ $book->quantity_total }}</p>
             <p><strong>Quantidade disponível:</strong> {{ $book->quantity_available }}</p>
+            
             <a href="{{ route('books.index') }}" class="btn-back2">Voltar</a>
         </div>
     </div>

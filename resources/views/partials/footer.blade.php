@@ -1,33 +1,60 @@
-<footer style="background-color: #2c3e50; color: #ecf0f1; padding: 60px 20px;">
-    <div class="container" style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
-        
-        <div style="flex: 1; min-width: 220px; text-align: left;">
-            <h4 style="margin-bottom: 15px;">📚 Biblioteca Online</h4>
-            <p style="font-size: 14px; line-height: 1.6;">
-                Gestão de livros com facilidade, elegância e eficiência.
-            </p>
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <h2><i class="fa-solid fa-book"></i> Biblioteca Online</h2>
+            <p>Conectando leitores e conhecimento através da tecnologia.</p>
+            <p><strong>Email:</strong> bbanze@gmail.com</p>
+            <p><strong>Telefone:</strong> +258 86 173 7171</p>
         </div>
 
-        <div style="flex: 1; min-width: 220px; text-align: left;">
-            <h4 style="margin-bottom: 15px;">🔗 Links Rápidos</h4>
-            <ul style="list-style: none; padding: 0; font-size: 14px;">
-                <li><a href="{{ route('books.index') }}" style="color: #ecf0f1; text-decoration: none;">📘 Livros</a></li>
-                <li><a href="{{ route('books.create') }}" style="color: #ecf0f1; text-decoration: none;">➕ Adicionar Livro</a></li>
-                <li><a href="#" style="color: #ecf0f1; text-decoration: none;">📄 Termos e Condições</a></li>
+        <div class="footer-links">
+            <ul>
+                <h4>Institucional</h4>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="#">Nossa Missão</a></li>
+                <li><a href="#">Equipe</a></li>
+                <li><a href="#">Carreiras</a></li>
             </ul>
-        </div>
+        <ul>
+            <h4>Serviços</h4>
+            <li><a href="#">Catálogo de Livros</a></li>
+            <li><a href="#">Plano de Assinaturas</a></li>
+            <li><a href="#">Recursos Educacionais</a></li>
+            <li><a href="#">Projectos Escolares</a></li>
+        </ul>
 
-        <div style="flex: 1; min-width: 220px; text-align: left;">
-            <h4 style="margin-bottom: 15px;">📞 Contacto</h4>
-            <p style="font-size: 14px; line-height: 1.6;">
-                +258 XX XXX XXXX<br>
-                ✉️ contacto@biblioteca.com
-            </p>
-        </div>
+        <ul>
+            <h4>Ajuda</h4>
+            <li><a href="#">Central de Suporte</a></li>
+            <li><a href="#">Perguntas Frequentes</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="#">Reportar Problemas</a></li>
+        </ul>
 
+        <ul>
+            <h4>Legal</h4>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Cookies</a></li>
+            <li><a href="#">Acessibilidade</a></li>
+        </ul>
+
+        </div>
     </div>
 
-    <div style="text-align: center; margin-top: 40px; font-size: 13px; color: #bdc3c7;">
-        &copy; {{ date('Y') }} Biblioteca Online. Todos os direitos reservados.
+    <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <p>&copy; <span id="ano"></span> Biblioteca Online. Todos os direitos reservados.</p>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Desenvolvido em Laravel por Basílio Banze</p>
     </div>
 </footer>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+</script>

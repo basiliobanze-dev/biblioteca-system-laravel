@@ -1,4 +1,4 @@
-<div class="form-container" style="margin-TOP: 60px;">    
+<div class="form-container">    
         <!-- c1 -->
         <div>
             <div class="form-group">
@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    <div class="form-actions" style="margin-bottom: 120px;">
+    <div class="form-actions">
         <button type="submit" class="btn-save">Salvar</button>
         <a href="{{ route('books.index') }}" class="btn-back">Voltar</a>
     </div>

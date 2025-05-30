@@ -1,7 +1,7 @@
 <div>
     <div class="user-form-container">
 
-        @if ($errors->any())
+        <!-- @if ($errors->any())
             <div class="user-form-errors">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif -->
 
         <div class="form-group">
             <label for="name" class="form-label">Nome</label>
@@ -30,6 +30,7 @@
                 <option value="admin" {{ old('role', $user->role ?? '') === 'admin' ? 'selected' : '' }}>Administrador</option>
             </select>
         </div>
+        
     </div>
 
     <div class="user-form-actions">

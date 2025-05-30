@@ -1,4 +1,4 @@
-/* Fundo da página */
+/* BACKGROUND PAGE */
 body {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Centralização da estrutura */
+/* STRUCTURE CENTER */
 .login-container {
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@ body {
     gap: 20px;
 }
 
-/* Parte de cima com ícone e saudação */
+/* WELCOME ICON */
 .login-top {
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@ body {
     margin: 0;
 }
 
-/* Caixa branca do login */
+/* WHITE BOX LOGIN */
 .login-box {
     background-color: white;
     padding: 30px 25px;
@@ -84,7 +84,7 @@ button:hover {
     background-color: #354758;
 }
 
-/* Rodapé com links */
+/* FOOTER LINKS */
 .login-footer {
     display: flex;
     justify-content: space-between;
