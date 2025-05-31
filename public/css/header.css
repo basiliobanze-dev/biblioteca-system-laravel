@@ -3,6 +3,11 @@
     background-color: #1d2a3a;
 }
 
+img.rounded-circle {
+    border: 2px solid #ccc;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
 .header {
     padding: 20px 0;
     color: #1ABC9C;

@@ -1,0 +1,161 @@
+/* GERAL STYLES */
+body {
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+}
+
+/* SHOW PROFILE STYLE */
+.profile-container {
+    width: 350px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #3a4d5f;
+    border-radius: 12px;
+    box-shadow: 0 1px 20px #3a4d5f;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;/
+}
+
+.profile-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #1ABC9C;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.profile-info h2 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    color: #1D2A3A;
+}
+
+.profile-info p {
+    font-size: 0.95rem;
+    color: #3a4d5f;
+    margin: 0.3rem 0;
+}
+
+/* CENTER BTNS FORM */
+.profile-form-actions {
+    text-align: center;
+    margin-bottom: 120px;
+    margin-top: -5px;
+}
+
+/* EDIT PROFILE STYLES */
+.edit-profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 3rem auto;
+    background-color: #1d2a3a;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px #1d2a3a;
+}
+
+.profile-column, .form-column {
+    flex: 1;
+    min-width: 280px;
+}
+
+h1.form-title, h2.form-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #00BFA6;
+    text-align: center;
+}
+
+.upload-image-wrapper input[type="file"] {
+    display: none;
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-profile-form .form-group input,
+.edit-profile-form .form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+.edit-profile-form .form-group input:focus,
+.edit-profile-form .form-group select:focus {
+    outline: none;
+    border-color: #00BFA6;
+    background-color: #f9f9f9;
+}
+
+/* IMG */
+.upload-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+h2.form-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #00BFA6;
+}
+
+.upload-image-wrapper {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 4px solid #00BFA6;
+    box-shadow: 0 0 12px #007767;
+    margin-top: 1rem;
+}
+
+.upload-hint {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    text-align: center;
+    font-style: italic;
+}
+
+/* CENTER BTNS FORM */
+.profile-edit-form-actions {
+    text-align: center;
+    margin-bottom: 120px;
+    margin-top: -15px;
+}

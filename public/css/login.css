@@ -42,7 +42,7 @@ body {
 .login-box {
     background-color: white;
     padding: 30px 25px;
-    border-radius: 10px;
+    border-radius: 12px;
     width: 100%;
     max-width: 360px;
     box-shadow: 0 0 15px rgb(139, 139, 139);

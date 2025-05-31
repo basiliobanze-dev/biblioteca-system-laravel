@@ -105,7 +105,7 @@ class BookController extends Controller
 
         $book->update($validated);
 
-        return redirect()->route('books.index')->with('success', 'Livro atualizado com sucesso!');
+        return redirect()->route('books.index')->with('success', 'Livro actualizado com sucesso!');
     }
 
     
@@ -115,6 +115,6 @@ class BookController extends Controller
         // $book->status = 'inativo';
         // $book->save();
 
-        return redirect()->route('books.index')->with('success', 'Livro Excluído com sucesso!');
+        return redirect()->route('books.index')->with('success', 'Livro excluído com sucesso!');
     }
 }

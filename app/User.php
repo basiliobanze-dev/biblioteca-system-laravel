@@ -51,4 +51,9 @@ class User extends Authenticatable
                 return ucfirst($this->role);
         }
     }
+
+    public function account()
+    {
+        return $this->hasOne(Account::class);
+    }
 }

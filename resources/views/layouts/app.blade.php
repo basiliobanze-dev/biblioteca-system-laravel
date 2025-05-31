@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{{ asset('css/side-bar.css') }}">
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
         <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     </head>
 
     <body>

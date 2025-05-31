@@ -24,6 +24,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('books', BookController::class)->middleware(['auth', 'isAdmin']);
     
     Route::resource('users', 'UserController')->middleware(['auth', 'isAdmin']);
+
+    Route::get('/profile', 'ProfileController@show')->name('profile.show');
+    Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+    Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
 });
 
 

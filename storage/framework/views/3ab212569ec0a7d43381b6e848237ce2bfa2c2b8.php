@@ -1,4 +1,4 @@
-@php
+<?php
     $routeName = \Request::route()->getName();
 
     if ($routeName === 'home') {
@@ -34,7 +34,7 @@
                 $pageTitle = ucfirst($resource);
         }
     }
-@endphp
+?>
 
 <div>
     <div class="top-bar"></div>
@@ -43,20 +43,21 @@
             <i class="fa-solid fa-book icon-color"></i> BIBLIOTECA ONLINE
         </h4>
 
-        @auth
-            <a href="{{ route('profile.show') }}" class="d-flex align-items-center gap-2 text-decoration-none" style="position: absolute; right: 15px;">
+        <?php if(auth()->guard()->check()): ?>
+            <a href="<?php echo e(route('profile.show')); ?>" class="d-flex align-items-center gap-2 text-decoration-none" style="position: absolute; right: 15px;">
                 <span class="fw-semibold text-dark">
-                    {{ Auth::user()->name }}
+                    <?php echo e(Auth::user()->name); ?>
+
                 </span>
 
-                @if(Auth::user()->account && Auth::user()->account->profile_image)
-                    <img src="{{ asset('storage/profiles/' . Auth::user()->account->profile_image) }}"
+                <?php if(Auth::user()->account && Auth::user()->account->profile_image): ?>
+                    <img src="<?php echo e(asset('storage/profiles/' . Auth::user()->account->profile_image)); ?>"
                         alt="Perfil" class="rounded-circle" width="40" height="40" style="object-fit: cover;">
-                @else
+                <?php else: ?>
                     <i class="fa-solid fa-user-circle fa-2x" style="color: #1d2a3a;"></i>
-                @endif
+                <?php endif; ?>
             </a>
-        @endauth
+        <?php endif; ?>
 
     </div>
 </div>
@@ -68,6 +69,7 @@
             <i class="fas fa-bars fa-lg icon-color"></i>
         </button>
 
-        <span class="fw-semibold text-primary-custom">{{ $pageTitle }}</span>
+        <span class="fw-semibold text-primary-custom"><?php echo e($pageTitle); ?></span>
     </div>
 </div>
+<?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/partials/header.blade.php ENDPATH**/ ?>

@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div>
         <div class="table-header d-flex justify-content-between align-items-center mb-3">
             <a href="{{ route('books.create') }}" class="btn btn-add mb-3">Adicionar Livro</a>
@@ -10,12 +17,6 @@
                 <button type="submit" class="search-button btn btn-primary btn-sm ml-2">Pesquisar</button>
             </form>
         </div>
-
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
-                {{ session('success') }}
-            </div>
-        @endif
 
         <table class="table">
             <thead>
@@ -62,19 +63,19 @@
             </tbody>
         </table>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const alert = document.getElementById('success-alert');
-                if (alert) {
-                    setTimeout(() => {
-                        alert.style.transition = 'opacity 0.5s ease';
-                        alert.style.opacity = '0';
-                        setTimeout(() => alert.remove(), 500); // remove após o fade
-                    }, 3000); // 3 segundos
-                }
-            });
-        </script>
-
         {{ $books->links() }}
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const alert = document.getElementById('success-alert');
+            if (alert) {
+                setTimeout(() => {
+                    alert.style.transition = 'opacity 0.5s ease';
+                    alert.style.opacity = '0';
+                    setTimeout(() => alert.remove(), 500); // remove após o fade
+                }, 3000); // 3 segundos
+            }
+        });
+    </script>
 @endsection

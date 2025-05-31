@@ -1,5 +1,4 @@
 body {
-  background-image: url('/imagens/livros-bg.png'); /* imagem de livros ou padrão de ícones */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -167,7 +166,7 @@ button.search-button,
     gap: 20px;
     background: #1d2a3a;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 12px;
     box-shadow: 0px 4px 6px #1d2a3a;
 }
 
@@ -228,6 +227,7 @@ button.search-button,
     border-radius: 6px;
     font-weight: 500;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
 .btn-back {
@@ -288,7 +288,7 @@ button.search-button,
     gap: 40px;
     background: #f7f9fc;
     padding: 30px;
-    border: 1px solid #1D2A3A;
+    border: 1px solid #3a4d5f;
     border-radius: 12px;
     box-shadow: 0 1px 20px #3a4d5f;
     max-width: 900px;
@@ -300,7 +300,7 @@ button.search-button,
 .book-cover img {
     width: 310px;
     height: 500px;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 4px 10px #2c3e50;
     object-fit: cover;
 }
@@ -321,9 +321,9 @@ button.search-button,
     color: #3a4d5f;
 }
 
-.book-info p strong {
+/* .book-info p strong {
     color: #1D2A3A;
-}
+} */
 
 .btn-back2 {
     position: absolute;

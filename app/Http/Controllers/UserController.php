@@ -50,6 +50,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        $user->load('account'); // load data of account
         return view('users.show', compact('user'));
     }
 
@@ -76,7 +77,7 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        return redirect()->route('users.index')->with('success', 'Usuário atualizado com sucesso!');
+        return redirect()->route('users.index')->with('success', 'Usuário actualizado com sucesso!');
     }
 
 
