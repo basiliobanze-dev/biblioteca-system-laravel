@@ -15,25 +15,25 @@
                     <?php if($user->account && $user->account->profile_image): ?>
                         <img src="<?php echo e(asset('storage/profiles/' . $user->account->profile_image)); ?>" alt="Foto de Perfil">
                     <?php else: ?>
-                        <img src="https://ui-avatars.com/api/?name=<?php echo e(urlencode($user->name)); ?>&background=ccc&color=555&size=50&rounded=true"
-                            alt="Avatar Padrão"
-                            style="width: 50px; height: 50px; border-radius: 50%;">
+                        <img src="https://ui-avatars.com/api/?name=<?php echo e(urlencode($user->name)); ?>&background=ccc&color=555&size=100&rounded=true"
+                            alt="Avatar Padrão">
                     <?php endif; ?>
                 </div>
 
                 <div class="profile-info">
                     <h2><?php echo e($user->name); ?></h2>
-                    <p><?php echo e($user->email); ?></p>
-                    <p><strong>Gênero:</strong> <?php echo e($user->account->gender ?? '---'); ?></p>
-                    <p><strong>Nascimento:</strong> <?php echo e($user->account->birth_date ? \Carbon\Carbon::parse($user->account->birth_date)->format('d-m-Y') : '---'); ?></p>
-                    <p><strong>Telefone:</strong> <?php echo e($user->account->phone ?? '---'); ?></p>
-                    <p><strong>Endereço:</strong> <?php echo e($user->account->address ?? '---'); ?></p>
+                    <p class="profile-email"><i class="fas fa-envelope"></i> <?php echo e($user->email); ?></p>
+                    <p><i class="fas fa-venus-mars"></i> <strong>Gênero:</strong> <?php echo e($user->account && $user->account->gender ? $user->account->gender : '---'); ?></p>
+                    <p><i class="fas fa-birthday-cake"></i> <strong>Nascimento:</strong> <?php echo e($user->account && $user->account->birth_date ? \Carbon\Carbon::parse($user->account->birth_date)->format('d/m/Y') : '---'); ?></p>
+                    <p><i class="fas fa-phone"></i> <strong>Telefone:</strong> <?php echo e($user->account && $user->account->phone ? $user->account->phone : '---'); ?></p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> <?php echo e($user->account && $user->account->address ? $user->account->address : '---'); ?></p>
                 </div>
             </div>
         </section>
 
+
         <div class="profile-form-actions">
-            <a href="<?php echo e(route('profile.edit')); ?>" class="btn-save">Editar</a>
+            <a href="<?php echo e(route('profile.edit')); ?>" class="btn-edit-profile">Editar</a>
             <a href="<?php echo e(route('home')); ?>" class="btn-back">Voltar</a>
         </div>
     </div>

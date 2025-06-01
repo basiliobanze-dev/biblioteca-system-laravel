@@ -12,14 +12,14 @@
                     @else
                         <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=ccc&color=555&size=50&rounded=true"
                             alt="Avatar Padrão"
-                            style="width: 100px; height: 100px; border-radius: 50%;">
+                            style="width: 120px; height: 120px; border-radius: 50%;">
                     @endif
                 </div>
                 
                 <div class="profile-info">
                     <h2>{{ $user->name }}</h2>
-                    <p>{{ $user->email }}</p>
-                    <p><strong>Tipo de Perfil:</strong>
+                    <p class="profile-email"><i class="fas fa-envelope"></i> {{ $user->email }}</p>
+                    <p><strong><i class="fa-solid fa-circle-user"></i> Tipo de Perfil:</strong>
                         @if ($user->role === 'admin')
                             Administrador
                         @elseif ($user->role === 'librarian')
@@ -28,10 +28,10 @@
                             Leitor
                         @endif
                     </p>
-                    <p><strong>Gênero:</strong> {{ $user->account->gender ?? '---' }}</p>
-                    <p><strong>Nascimento:</strong> {{ $user->account->birth_date ? \Carbon\Carbon::parse($user->account->birth_date)->format('d-m-Y') : '---' }}</p>
-                    <p><strong>Telefone:</strong> {{ $user->account->phone ?? '---' }}</p>
-                    <p><strong>Endereço:</strong> {{ $user->account->address ?? '---' }}</p>
+                    <p><i class="fas fa-venus-mars"></i> <strong>Gênero:</strong> {{ $user->account && $user->account->gender ? $user->account->gender : '---' }}</p>
+                    <p><i class="fas fa-birthday-cake"></i> <strong>Nascimento:</strong> {{ $user->account && $user->account->birth_date ? \Carbon\Carbon::parse($user->account->birth_date)->format('d/m/Y') : '---' }}</p>
+                    <p><i class="fas fa-phone"></i> <strong>Telefone:</strong> {{ $user->account && $user->account->phone ? $user->account->phone : '---' }}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> {{ $user->account && $user->account->address ? $user->account->address : '---' }}</p>
                 </div>
             </div>
         </section>

@@ -288,10 +288,10 @@ button.search-button,
     gap: 40px;
     background: #f7f9fc;
     padding: 30px;
-    border: 1px solid #3a4d5f;
+    border: 1px solid #edf3fc;
     border-radius: 12px;
-    box-shadow: 0 1px 20px #3a4d5f;
-    max-width: 900px;
+    box-shadow: 0 1px 20px #3a4d5fbb;
+    max-width: 1000px;
     margin: 40px auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 400px;
@@ -300,44 +300,83 @@ button.search-button,
 .book-cover img {
     width: 310px;
     height: 500px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px #2c3e50;
     object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.no-cover-preview {
+    width: 310px;
+    height: 500px;
+    background-color: #F7F9FC;
+    border: 1px solid #ccc;
+    color: #c2c2c2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 12px;
+    /* box-shadow: 0 4px 10px #2c3e50; */
+    text-align: center;
+}
+
+.no-cover-preview span {
+    font-style: italic;
 }
 
 .book-info {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .book-info h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #1ABC9C;
+    font-size: 2.4rem;
+    color: #1abc9c;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #1abc9c;
+    padding-bottom: 10px;
 }
 
-.book-info p {
-    font-size: 1.1rem;
+.book-field {
+    display: flex;
+    align-items: flex-start;
     margin-bottom: 12px;
-    color: #3a4d5f;
+    font-size: 1.05rem;
+    line-height: 1.4;
 }
 
-/* .book-info p strong {
-    color: #1D2A3A;
-} */
+.book-field .label {
+    font-weight: 600;
+    color: #2c3e50;
+    min-width: 130px;
+}
+
+.book-field .value {
+    color: #34495e;
+    flex: 1;
+}
+
+.book-field .label i {
+    color: #1abc9c;
+    margin-right: 6px;
+}
 
 .btn-back2 {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background-color: #F0F4F5;
-    color: #37474F;
-    border: 1px solid #1ABC9C;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    margin-top: 30px;
+    display: inline-block;
     text-decoration: none;
+    background-color: #00BFA6;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background 0.3s;
 }
 
 .btn-back2:hover {
-    background-color: #E0F7F5;
+    background-color: #009C8B;
 }
