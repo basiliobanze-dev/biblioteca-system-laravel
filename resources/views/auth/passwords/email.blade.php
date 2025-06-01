@@ -3,7 +3,7 @@
 @section('content')
 <div class="forgot-container">
     <div class="forgot-wrapper">
-        <h2 class="forgot-title">Recuperar Senha</h2>
+        <h2 class="authentication-title">Recuperar Senha</h2>
 
         <p class="forgot-info">Informe seu e-mail abaixo para receber um link e redefinir sua senha.</p>
 
@@ -25,7 +25,7 @@
             </div>
 
             <div class="forgot-actions">
-                <button type="submit" class="forgot-btn">Enviar link de redefinição</button>
+                <button type="submit"'>Enviar link de redefinição</button>
             </div>
         </form>
     </div>

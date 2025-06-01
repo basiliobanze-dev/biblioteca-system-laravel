@@ -51,6 +51,13 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user->load('account'); // load data of account
+
+        // Create empty account if doesn't exist
+        if (!$user->account) {
+            $user->account()->create();
+            $user->refresh(); // reload of DB includ
+        }
+
         return view('users.show', compact('user'));
     }
 

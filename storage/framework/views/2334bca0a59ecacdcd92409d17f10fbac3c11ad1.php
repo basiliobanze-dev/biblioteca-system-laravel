@@ -21,12 +21,12 @@
                 <?php echo method_field('PUT'); ?>
 
                 <div class="form-group">
-                    <label for="name">Nome</label>
+                    <label for="name" class="form-label">Nome</label>
                     <input type="text" name="name" id="name" value="<?php echo e(old('name', $user->name)); ?>" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="gender">Gênero</label>
+                    <label for="gender" class="form-label">Gênero</label>
                     <select name="gender" id="gender">
                         <option value="">--</option>
                         <option value="M" <?php echo e(old('gender', $user->account->gender ?? '') == 'M' ? 'selected' : ''); ?>>M</option>
@@ -35,17 +35,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="birth_date">Data de Nascimento</label>
+                    <label for="birth_date" class="form-label">Data de Nascimento</label>
                     <input type="date" name="birth_date" id="birth_date" value="<?php echo e(old('birth_date', $user->account->birth_date ?? '')); ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Telefone</label>
+                    <label for="phone" class="form-label">Telefone</label>
                     <input type="text" name="phone" id="phone" value="<?php echo e(old('phone', $user->account->phone ?? '')); ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="address">Endereço</label>
+                    <label for="address" class="form-label">Endereço</label>
                     <input type="text" name="address" id="address" value="<?php echo e(old('address', $user->account->address ?? '')); ?>">
                 </div>
             </form>

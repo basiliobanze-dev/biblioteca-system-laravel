@@ -20,6 +20,13 @@
     font-size: 16px;
 }
 
+.user-form-input,
+.user-form-select {
+    outline: none;
+    border-color: #00BFA6;
+    background-color: #f9f9f9;
+}
+
 /* CENTER BTNS FORM */
 .user-form-actions {
     text-align: center;
@@ -29,38 +36,9 @@
 
 
 /* USER DETAIL */
-.user-card {
-    position: relative;
-    gap: 40px;
-    border: 1px solid #3a4d5f;
-    border-radius: 12px;
-    box-shadow: 0 1px 20px #3a4d5f;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    background-color: white;
-    /* color: #fff; */
-    padding: 30px;
-    max-width: 500px;
-    margin: 50px auto;
-    border-radius: 12px;
-    position: relative;
-}
-
-.user-card p {
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-    color: #3a4d5f;
-}
-
-.user-card strong {
-    color: #1D2A3A;
-}
-
+/* USING STYLES OF PROFILE CONTAINER... */
 /* BTN */
 .btn-user-back {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
     background-color: #F0F4F5;
     color: #37474F;
     border: 1px solid #1ABC9C;

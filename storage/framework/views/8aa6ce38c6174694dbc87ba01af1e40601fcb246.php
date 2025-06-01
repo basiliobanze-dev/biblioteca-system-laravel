@@ -1,19 +1,45 @@
 <?php $__env->startSection('content'); ?>
-    <div class="user-card">
-        <p><strong>Nome:</strong> <?php echo e($user->name); ?></p>
-        <p><strong>Email:</strong> <?php echo e($user->email); ?></p>
-        <p><strong>Perfil:</strong>
-            <?php if($user->role === 'admin'): ?>
-                Administrador
-            <?php elseif($user->role === 'librarian'): ?>
-                Bibliotecário
-            <?php else: ?>
-                Leitor
-            <?php endif; ?>
-        </p>
+    <div>
+        <section class="profile-container">
+            <h1 class="profile-title">Usuário</h1>
 
-        <a href="<?php echo e(route('users.index')); ?>" class="btn-user-back">Voltar</a>
+            <div class="profile-card">
+                <div class="profile-image">
+                    <?php if($user->account && $user->account->profile_image): ?>
+                        <img src="<?php echo e(asset('storage/profiles/' . $user->account->profile_image)); ?>" alt="Foto de Perfil">
+                    <?php else: ?>
+                        <img src="https://ui-avatars.com/api/?name=<?php echo e(urlencode($user->name)); ?>&background=ccc&color=555&size=50&rounded=true"
+                            alt="Avatar Padrão"
+                            style="width: 100px; height: 100px; border-radius: 50%;">
+                    <?php endif; ?>
+                </div>
+                
+                <div class="profile-info">
+                    <h2><?php echo e($user->name); ?></h2>
+                    <p><?php echo e($user->email); ?></p>
+                    <p><strong>Tipo de Perfil:</strong>
+                        <?php if($user->role === 'admin'): ?>
+                            Administrador
+                        <?php elseif($user->role === 'librarian'): ?>
+                            Bibliotecário
+                        <?php else: ?>
+                            Leitor
+                        <?php endif; ?>
+                    </p>
+                    <p><strong>Gênero:</strong> <?php echo e($user->account->gender ?? '---'); ?></p>
+                    <p><strong>Nascimento:</strong> <?php echo e($user->account->birth_date ? \Carbon\Carbon::parse($user->account->birth_date)->format('d-m-Y') : '---'); ?></p>
+                    <p><strong>Telefone:</strong> <?php echo e($user->account->phone ?? '---'); ?></p>
+                    <p><strong>Endereço:</strong> <?php echo e($user->account->address ?? '---'); ?></p>
+                </div>
+            </div>
+        </section>
+
+        <div class="profile-form-actions">
+            <!-- <a href="<?php echo e(route('users.index')); ?>" class="btn-back">Voltar</a> -->
+            <a href="<?php echo e(route('users.index')); ?>" class="btn-user-back">Voltar</a>
+        </div>
     </div>
 <?php $__env->stopSection(); ?>
+
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/users/show.blade.php ENDPATH**/ ?>

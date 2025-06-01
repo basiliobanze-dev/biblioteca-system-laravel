@@ -7,19 +7,16 @@
 }
 
 .forgot-wrapper {
-  background: white;
+  background: #F3F4F6;
   padding: 40px;
   width: 100%;
   max-width: 420px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgb(139, 139, 139);
+  box-shadow: 0 0 15px rgba(0, 233, 202, 0.568);
 }
 
-.forgot-title {
-  text-align: center;
-  font-size: 1.7rem;
-  color: #263544;
-  margin-bottom: 25px;
+.forgot-wrapper p {
+  color: #1D2A3A;
 }
 
 .forgot-success {
@@ -45,12 +42,20 @@
 .forgot-group label {
   font-weight: bold;
   margin-bottom: 5px;
+  color: #1D2A3A;
 }
 
 .forgot-group input {
   padding: 10px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 6px;
+}
+
+.forgot-group input:focus {
+    outline: none;
+    border-color: #00BFA6;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 0 0.2rem rgba(0, 191, 166, 0.25);
 }
 
 .forgot-error {
@@ -63,21 +68,6 @@
   text-align: center;
   margin-top: 20px;
 }
-
-.forgot-btn {
-  padding: 10px 18px;
-  background-color: 2c3e50;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.forgot-btn:hover {
-    background-color: #354758;
-}
-
 
 input[type="email"] {
     padding: 12px;

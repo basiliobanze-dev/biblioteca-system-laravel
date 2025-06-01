@@ -3,7 +3,7 @@
 @section('content')
 <div class="reset-container">
     <div class="reset-wrapper">
-        <h2 class="reset-title">Redefinir Senha</h2>
+        <h2 class="authentication-title">Redefinir Senha</h2>
 
         <form method="POST" action="{{ route('password.update') }}" class="reset-form">
             @csrf
@@ -31,7 +31,7 @@
             </div>
 
             <div class="reset-actions">
-                <button type="submit" class="reset-btn">Redefinir Senha</button>
+                <button type="submit">Redefinir Senha</button>
             </div>
         </form>
     </div>

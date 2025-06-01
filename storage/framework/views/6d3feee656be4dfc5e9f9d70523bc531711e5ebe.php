@@ -8,11 +8,11 @@
         </div>
 
         <div class="login-box">
-            <h2 class="login-title">LOGIN</h2>
+            <h2 class="authentication-title">LOGIN</h2>
             <form method="POST" action="<?php echo e(route('login')); ?>">
                 <?php echo csrf_field(); ?>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Senha" required>
+                <input type="email" name="email" class="form-input" placeholder="Email" required>
+                <input type="password" name="password" class="form-input" placeholder="Senha" required>
                 <button type="submit">Entrar</button>
             </form>
         </div>

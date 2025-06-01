@@ -18,7 +18,7 @@
                     @else
                         <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=ccc&color=555&size=50&rounded=true"
                             alt="Avatar Padrão"
-                            style="width: 50px; height: 50px; border-radius: 50%;">
+                            style="width: 100px; height: 100px; border-radius: 50%;">
                     @endif
                 </div>
 

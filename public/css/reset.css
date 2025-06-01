@@ -3,23 +3,19 @@
   justify-content: center;
   align-items: center;
   min-height: 90vh;
-  background-color: #263544;
 }
 
 .reset-wrapper {
-  background: white;
+  background: #F3F4F6;
   padding: 40px;
   width: 100%;
   max-width: 450px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgb(139, 139, 139);
+  box-shadow: 0 0 15px rgba(0, 233, 202, 0.568);
 }
 
-.reset-title {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: #263544;
+.reset-wrapper label {
+  color: #1D2A3A;
 }
 
 .reset-form {
@@ -40,8 +36,15 @@
 
 .reset-group input {
   padding: 10px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 6px;
+}
+
+.reset-group input:focus {
+    outline: none;
+    border-color: #00BFA6;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 0 0.2rem rgba(0, 191, 166, 0.25);
 }
 
 .reset-error {
@@ -53,18 +56,4 @@
 .reset-actions {
   text-align: center;
   margin-top: 20px;
-}
-
-.reset-btn {
-  padding: 10px 20px;
-  background-color: #263544;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.reset-btn:hover {
-  background-color: #354758;
 }
