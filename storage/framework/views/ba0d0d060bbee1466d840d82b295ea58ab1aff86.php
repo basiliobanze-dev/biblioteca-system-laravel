@@ -35,7 +35,7 @@
 
     <div class="user-form-actions">
         <button type="submit" class="btn-save">Salvar</button>
-        <a href="<?php echo e(route('users.index')); ?>" class="btn-back">Voltar</a>
+        <a href="<?php echo e(route('users.index')); ?>" class="btn-back">Cancelar</a>
     </div>
 </div>
 <?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/users/form.blade.php ENDPATH**/ ?>

@@ -109,7 +109,7 @@ unset($__errorArgs, $__bag); ?>
 
     <div class="form-actions">
         <button type="submit" class="btn-save">Salvar</button>
-        <a href="<?php echo e(route('books.index')); ?>" class="btn-back">Voltar</a>
+        <a href="<?php echo e(route('books.index')); ?>" class="btn-back">Cancelar</a>
     </div>
 </div>
 

@@ -6,7 +6,7 @@
     } elseif ($routeName === 'profile.show') {
         $pageTitle = 'Perfil';
     } elseif ($routeName === 'profile.edit') {
-        $pageTitle = 'Perfil';
+        $pageTitle = 'Editar Perfil';
     } else {
         $segments = explode('.', $routeName); // Ex: books.create => ['books', 'create']
         $resource = $segments[0] ?? 'livros';

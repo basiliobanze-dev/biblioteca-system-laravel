@@ -3,8 +3,8 @@
 @section('content')
     <div>
         <section class="profile-container">
-            <h1 class="profile-title">Usuário</h1>
-
+            <!-- <h1 class="profile-title">Usuário</h1> -->
+            <p class="id"><strong>ID:</strong>{{ $user->id }}</p>
             <div class="profile-card">
                 <div class="profile-image">
                     @if ($user->account && $user->account->profile_image)

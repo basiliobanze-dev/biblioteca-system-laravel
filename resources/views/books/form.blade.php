@@ -102,7 +102,7 @@
 
     <div class="form-actions">
         <button type="submit" class="btn-save">Salvar</button>
-        <a href="{{ route('books.index') }}" class="btn-back">Voltar</a>
+        <a href="{{ route('books.index') }}" class="btn-back">Cancelar</a>
     </div>
 </div>
 

@@ -60,6 +60,11 @@ body {
     margin: 0.4rem 0;
 }
 
+.id {
+    text-align: center;
+    color: #34495e;
+}
+
 .profile-info i {
     color: #1ABC9C;
     margin-right: 6px;
@@ -84,30 +89,6 @@ body {
 .btn-edit-profile:hover {
     background-color: #009C8B;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* CENTER BTNS FORM */
 .profile-form-actions {

@@ -51,13 +51,6 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user->load('account'); // load data of account
-
-        // Create empty account if doesn't exist
-        if (!$user->account) {
-            $user->account()->create();
-            $user->refresh(); // reload of DB includ
-        }
-
         return view('users.show', compact('user'));
     }
 
@@ -75,12 +68,12 @@ class UserController extends Controller
             'role'  => 'required|in:admin,librarian,reader',
         ]);
 
-        // Se foi fornecida nova senha, criptografa
-        if (!empty($validated['password'])) {
-            $validated['password'] = \Hash::make($validated['password']);
-        } else {
-            unset($validated['password']);
-        }
+        // Se was gives new password
+        // if (!empty($validated['password'])) {
+        //     $validated['password'] = \Hash::make($validated['password']);
+        // } else {
+        //     unset($validated['password']);
+        // }
 
         $user->update($validated);
 

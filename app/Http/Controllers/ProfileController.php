@@ -42,16 +42,16 @@ class ProfileController extends Controller
             'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Atualiza o nome do usuário
+        // update user Name
         $user->update(['name' => $request->name]);
 
-        // Foto de perfil
+        // profile photo
         if ($request->hasFile('profile_image')) {
             $path = $request->file('profile_image')->store('public/profiles');
             $account->profile_image = basename($path);
         }
 
-        // Atualiza os outros dados do perfil
+        // update another profile data
         $account->fill($request->only(['gender', 'birth_date', 'phone', 'address']));
         $account->user_id = $user->id;
         $account->save();

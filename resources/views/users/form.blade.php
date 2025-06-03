@@ -35,6 +35,6 @@
 
     <div class="user-form-actions">
         <button type="submit" class="btn-save">Salvar</button>
-        <a href="{{ route('users.index') }}" class="btn-back">Voltar</a>
+        <a href="{{ route('users.index') }}" class="btn-back">Cancelar</a>
     </div>
 </div>
