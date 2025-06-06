@@ -24,4 +24,4 @@
             </div>
         <?php endif; ?>
     </div>
-</div><?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/partials/side-bar.blade.php ENDPATH**/ ?>
+</div><?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/partials/side_bar.blade.php ENDPATH**/ ?>

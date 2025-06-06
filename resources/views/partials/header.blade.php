@@ -19,7 +19,7 @@
 
         switch ($action) {
             case 'index':
-                $pageTitle = 'Gestão de ' . ($resourceTitles[$resource] ?? ucfirst($resource));
+                $pageTitle = 'Gerenciamento de ' . ($resourceTitles[$resource] ?? ucfirst($resource));
                 break;
             case 'create':
                 $pageTitle = 'Adicionar ' . ($resourceTitles[$resource] ?? ucfirst($resource));

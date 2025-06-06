@@ -15,7 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+    Auth::routes();
+
+    // Central redirection to dashboard
+    Route::middleware(['auth'])->get('/dashboard', function () {
+        return auth()->user()->role === 'admin'
+            ? redirect()->route('admin.dashboard')
+            : redirect()->route('reader.dashboard');
+    })->name('dashboard');
+
+    // Individual Dashboards
+    Route::middleware(['auth', 'isAdmin'])->get('/admin/dashboard', function () {
+        return view('dashboard.admin');
+    })->name('admin.dashboard');
+
+    Route::middleware(['auth'])->get('/reader/dashboard', function () {
+        return view('dashboard.reader');
+    })->name('reader.dashboard');
+
 
 Route::middleware(['auth'])->group(function () {
     
@@ -28,6 +45,30 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', 'ProfileController@show')->name('profile.show');
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
+
+
+    // Routes of pattern Loans-CRUD (except destroy/show now)
+    Route::get('loans', 'LoanController@index')->name('loans.index');
+    Route::get('loans/create', 'LoanController@create')->name('loans.create');
+    Route::post('loans', 'LoanController@store')->name('loans.store');
+
+    // Personalized Route for return
+    Route::post('loans/{id}/return', 'LoanController@return')->name('loans.return');
+
+    Route::get('audit-logs', 'AuditLogController@index')->name('audit-logs.index');
+
+    Route::get('reports/top-books', 'ReportController@topBooks')->name('reports.top-books');
+    Route::get('reports/top-users', 'ReportController@topUsers')->name('reports.top-users');
+
+    Route::get('reports/top-books/pdf', 'ReportController@topBooksPdf')->name('reports.top-books.pdf');
+    Route::get('reports/top-users/pdf', 'ReportController@topUsersPdf')->name('reports.top-users.pdf');
+
+    Route::get('my-loans', 'LoanController@userLoans')->name('loans.mine');   
+
+    Route::get('track', 'LoanController@track')->name('loans.track');
+
+    Route::get('catalog', 'BookController@catalog')->name('books.catalog');
+
 });
 
 

@@ -29,7 +29,7 @@
                     <th>Ano</th>
                     <!-- <th>ISBN</th> -->
                     <th>Estado</th>
-                    <th>Ações</th>
+                    <th>Visualizar</th>
                 </tr>
             </thead>
             <tbody>

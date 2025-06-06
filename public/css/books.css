@@ -3,8 +3,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-color: #F8F9FA;
-  color: #F1F1F1;
+  background-color: #eaebec !important;
+  /* color: #F1F1F1; */
 }
 
 
@@ -32,9 +32,9 @@ header i {
 
 /* VIEWS CONTAINER */
 .container.mt-4 {
-    padding: 60px 60px;  /* espaço interno: cima/baixo 30px, lados 40px */
+    padding: 60px 1px;  /* espaço interno: cima/baixo 30px, lados 40px */
     margin-top: 40px;    /* espaço externo acima */
-    margin-bottom: 160px;    /* espaço externo acima */
+    margin-bottom: 150px;    /* espaço externo acima */
 }
 
 /* BUTTON "Add" */
@@ -47,7 +47,7 @@ header i {
   font-weight: bold;
   padding: 8px 15px;
 
-  color: #F8F9FA !important;
+  color: #eaebec !important;
   outline: none;
   box-shadow: none;
   text-decoration: none;
@@ -90,7 +90,7 @@ header i {
 .search-button {
   padding: 8px 15px;
   background-color: #00BFA6 !important;
-  color: #F8F9FA !important;
+  color: #eaebec !important;
   border: none !important;
   border-radius: 5px;
   cursor: pointer;
@@ -116,7 +116,7 @@ button.search-button,
 .search-button:active,
 .search-button:visited,
 .search-button:focus:active {
-    color: #F8F9FA !important;
+    color: #eaebec !important;
 }
 
 /* BOOKS TABLE */

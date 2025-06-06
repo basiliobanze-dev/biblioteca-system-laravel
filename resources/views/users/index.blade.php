@@ -13,7 +13,7 @@
             <a href="{{ route('users.create') }}" class="btn btn-add mb-3">Adicionar Usuário</a>
 
             <form method="GET" action="{{ route('users.index') }}" class="search-form d-flex">
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Pesquisar por nome ou email..." class="search-input form-control form-control-sm">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Pesquisar por nome ou email..." class="search-input search-user form-control form-control-sm">
                 <button type="submit" class="search-button btn btn-sm ml-2">Pesquisar</button>
             </form>
         </div>
