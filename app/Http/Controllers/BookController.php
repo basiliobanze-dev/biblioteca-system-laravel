@@ -134,4 +134,18 @@ class BookController extends Controller
         $books = Book::where('quantity_available', '>', 0)->paginate(10);
         return view('books.catalog', compact('books'));
     }
+
+    
+    // public function search(Request $request)
+    // {
+    //     $query = $request->query('q');
+    //     $books = Book::where('title', 'like', '%' . $query . '%')
+    //         ->where('quantity_available', '>', 0)
+    //         ->limit(10)
+    //         ->get(['id', 'title', 'quantity_available']);
+
+    //     return response()->json($books);
+    // }
+
+
 }

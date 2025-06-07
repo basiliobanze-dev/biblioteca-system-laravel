@@ -1,161 +1,328 @@
-/* Variáveis de cor */
-:root {
-    --primary-color: #00BFA6;
-    --secondary-color: #1D2A3A;
-    --background-color: #F3F4F6;
-    --text-color: #333333;
-    --light-text: #777777;
-    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-/* Container principal */
-.dashboard-container {
+Estilos gerais
+.library-dashboard {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-color);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #3E3A36;
 }
 
-/* Cabeçalho do dashboard */
-.dashboard-header {
-    margin-bottom: 2.5rem;
+/* Banner superior */
+.library-banner {
+    background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center 30%;
+    height: 200px;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.dashboard-header h1 {
-    color: var(--secondary-color);
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
+.banner-overlay {
+    background: rgba(29, 42, 58, 0.7);
+    color: white;
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 3rem;
+}
+
+.library-banner h1 {
+    font-size: 2.5rem;
+    margin: 0;
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
 }
 
 .welcome-message {
-    color: var(--light-text);
-    font-size: 1.1rem;
-    margin: 0;
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Grid de cartões */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
+    margin-bottom: 3rem;
 }
 
 /* Estilo base dos cartões */
 .dashboard-card {
-    background: white;
-    border-radius: 10px;
+    background: #FFFDF7;
+    border-radius: 5px;
     padding: 1.5rem;
-    box-shadow: var(--card-shadow);
-    transition: transform 0.2s ease;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #E8E5DD;
 }
 
 .dashboard-card:hover {
     transform: translateY(-5px);
-}
-
-.card-icon {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 .card-content {
-    flex: 1;
+    position: relative;
+    z-index: 2;
 }
 
 .card-content h3 {
-    color: var(--secondary-color);
+    color: #1D2A3A;
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
 }
 
 .card-text {
-    color: var(--light-text);
-    line-height: 1.5;
+    color: #7A756E;
+    line-height: 1.6;
     margin-bottom: 1.5rem;
 }
 
-.card-value {
-    font-size: 2.5rem;
+/* Cartão de livro - com lombada */
+.book-card {
+    padding-left: 2.5rem;
+    border-left: 12px solid #1D2A3A;
+    position: relative;
+}
+
+.card-spine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    background: #00BFA6;
+}
+
+.book-counter {
+    margin: 1.5rem 0;
+}
+
+.counter-number {
+    font-size: 3rem;
     font-weight: bold;
-    color: var(--primary-color);
-    margin: 0.5rem 0;
+    color: #00BFA6;
+    line-height: 1;
 }
 
-.card-subtext {
-    color: var(--light-text);
+.counter-label {
+    display: block;
+    color: #7A756E;
     font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    margin-top: 0.3rem;
 }
 
-/* Estilos específicos para cada tipo de cartão */
-.highlight-card {
-    border-top: 4px solid var(--primary-color);
+/* Cartão de catálogo - com carimbo */
+.catalog-card {
+    background: #F5EEDC;
+    position: relative;
 }
 
-.action-card {
-    border-top: 4px solid #4CAF50;
+.library-stamp {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #A82B2B;
+    color: white;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transform: rotate(15deg);
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* Cartão de recomendações - com dobra de página */
 .recommendation-card {
-    border-top: 4px solid #FF9800;
+    background: white;
+    position: relative;
 }
 
-.quote-card {
-    border-top: 4px solid #9C27B0;
+.page-fold {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 30px 30px 0;
+    border-color: transparent #E8E5DD transparent transparent;
 }
 
-/* Botões dos cartões */
+.book-recommendation {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    align-items: center;
+}
+
+.book-cover-dashboard {
+    width: 50px;
+    height: 70px;
+    background: #1D2A3A;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.book-cover-dashboard.large {
+    width: 80px;
+    height: 110px;
+    font-size: 1.8rem;
+    margin: 0 auto 1rem;
+}
+
+.book-info h4 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.1rem;
+}
+
+.book-author {
+    color: #7A756E;
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+    font-style: italic;
+}
+
+.book-genre {
+    display: inline-block;
+    background: #E8E5DD;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+/* Cartão de notícias - estilo jornal */
+.news-card {
+    background: #F5EEDC;
+    padding: 1.2rem;
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed #D0C8B8;
+}
+
+.news-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.news-date {
+    font-size: 0.8rem;
+    color: #7A756E;
+}
+
+.news-items {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.news-items li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.news-items li:before {
+    content: "•";
+    color: #00BFA6;
+    position: absolute;
+    left: 0;
+}
+
+.news-footer {
+    font-style: italic;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #D0C8B8;
+    color: #7A756E;
+}
+
+/* Botões */
 .card-button {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--primary-color);
+    color: #1D2A3A;
     text-decoration: none;
     font-weight: 500;
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
-    transition: color 0.2s ease;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 191, 166, 0.1);
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
 
 .card-button:hover {
-    color: var(--secondary-color);
+    background: rgba(0, 191, 166, 0.2);
+    color: #1D2A3A;
 }
 
-/* Recomendações */
-.recommendation {
+/* Seção de destaques */
+.featured-section {
+    margin-top: 3rem;
+}
+
+.featured-section h2 {
+    color: #1D2A3A;
+    border-bottom: 2px solid #00BFA6;
+    padding-bottom: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    background: #FFF9E6;
-    padding: 0.8rem;
-    border-radius: 5px;
-    margin: 1rem 0;
 }
 
-.recommendation i {
-    color: #FF9800;
+.featured-books {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-/* Citação */
-blockquote {
-    font-style: italic;
-    color: var(--text-color);
-    border-left: 3px solid var(--primary-color);
-    padding-left: 1rem;
-    margin: 1rem 0;
+.featured-book {
+    text-align: center;
 }
 
-.quote-author {
-    text-align: right;
+.featured-book h4 {
+    margin: 1rem 0 0.3rem 0;
+    color: #00BFA6;
+    font-size: 1rem;
+}
+
+.featured-book p {
+    margin: 0;
     font-size: 0.9rem;
-    color: var(--light-text);
+    color: #7A756E;
+}
+
+/* Ícones */
+.card-icon {
+    font-size: 1.5rem;
+    color: #00BFA6;
+    margin-bottom: 1rem;
 }

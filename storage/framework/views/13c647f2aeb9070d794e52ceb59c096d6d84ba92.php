@@ -50,12 +50,12 @@
                         <td><?php echo e($book->status); ?></td>
                         <td>
                             <a href="<?php echo e(route('books.show', $book)); ?>" class="btn btn-sm btn-view"><i class="fas fa-eye"></i></a>
-                            <a href="<?php echo e(route('books.edit', $book)); ?>" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>
+                            <!-- <a href="<?php echo e(route('books.edit', $book)); ?>" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>
                             <form action="<?php echo e(route('books.destroy', $book)); ?>" method="POST" style="display:inline;">
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('DELETE'); ?>
                                 <button class="btn btn-sm btn-remove" onclick="return confirm('Tem certeza?')"><i class="fas fa-trash-alt"></i></button>
-                            </form>
+                            </form> -->
                         </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -14,19 +14,17 @@ class CreateLoansTable extends Migration
     public function up()
     {
         Schema::create('loans', function (Blueprint $table) {
-            $table->bigIncrements('id');
+           $table->bigIncrements('id');
 
             $table->unsignedBigInteger('user_id');
-            $table->string('protocol')->unique(); // loan code
-            $table->date('loan_date');
-            $table->date('due_date');
-            $table->date('returned_at')->nullable();
-            $table->enum('status', ['borrowed', 'returned', 'late'])->default('borrowed');
-            $table->decimal('fine_amount', 8, 2)->default(0); // fine in MZN
-
+            $table->dateTime('loan_date'); // Loan date
+            $table->dateTime('due_date'); // Prev return date
+            $table->dateTime('return_date')->nullable(); // real return date
+            $table->string('protocol')->unique();  // unique loan code
+            $table->decimal('fine_amount', 8, 2)->default(0); // fine
+            $table->enum('status', ['active', 'returned', 'overdue'])->default('active');
             $table->timestamps();
 
-            // foreign key
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

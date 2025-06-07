@@ -24,7 +24,7 @@
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Perfil</th>
-                    <th>Ações</th>
+                    <th>Visualizar</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,12 +46,12 @@
                         <td><?php echo e($user->role_label); ?></td>
                         <td>
                             <a href="<?php echo e(route('users.show', $user)); ?>" class="btn btn-sm btn-view"><i class="fas fa-eye"></i></a>
-                            <a href="<?php echo e(route('users.edit', $user)); ?>" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>
+                            <!-- <a href="<?php echo e(route('users.edit', $user)); ?>" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>
                             <form action="<?php echo e(route('users.destroy', $user)); ?>" method="POST" style="display:inline;">
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('DELETE'); ?>
                                 <button class="btn btn-sm btn-remove" onclick="return confirm('Tem certeza?')"><i class="fas fa-trash-alt"></i></button>
-                            </form>
+                            </form> -->
                         </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

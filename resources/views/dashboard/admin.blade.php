@@ -29,7 +29,7 @@
                 <a href="{{ route('reports.top-users') }}" class="admin-link">
                     <i class="fas fa-chart-bar"></i></i> Relatório: Usuários
                 </a>
-                <a href="{{ route('audit-logs.index') }}" class="admin-link">
+                <a href="{{ route('audit_logs.index') }}" class="admin-link">
                     <i class="fas fa-clipboard-list"></i> Logs de Auditoria
                 </a>
             </div>

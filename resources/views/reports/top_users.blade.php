@@ -9,9 +9,6 @@
         </a>
     </div>
 
-
-    <!-- <h2 class="form-check-label text-dark">Usuários com Mais Empréstimos</h2> -->
-
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -22,12 +19,12 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($users as $index => $user)
+            @forelse ($users as $index => $item)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $user->user->name ?? 'Usuário removido' }}</td>
-                    <td>{{ $user->user->email ?? '-' }}</td>
-                    <td>{{ $user->total }}</td>
+                    <td>{{ $item->user->name ?? 'Usuário removido' }}</td>
+                    <td>{{ $item->user->email ?? '-' }}</td>
+                    <td>{{ $item->total }}</td>
                 </tr>
             @empty
                 <tr>
@@ -36,5 +33,6 @@
             @endforelse
         </tbody>
     </table>
+    {{ $users->links() }}
 </div>
 @endsection

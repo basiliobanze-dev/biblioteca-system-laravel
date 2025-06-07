@@ -27,7 +27,7 @@
                 <a href="<?php echo e(route('reports.top-users')); ?>" class="admin-link">
                     <i class="fas fa-chart-bar"></i></i> Relatório: Usuários
                 </a>
-                <a href="<?php echo e(route('audit-logs.index')); ?>" class="admin-link">
+                <a href="<?php echo e(route('audit_logs.index')); ?>" class="admin-link">
                     <i class="fas fa-clipboard-list"></i> Logs de Auditoria
                 </a>
             </div>

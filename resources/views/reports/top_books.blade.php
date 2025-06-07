@@ -9,8 +9,6 @@
         </a>
     </div>
 
-    <!-- <h2 class="form-check-label text-dark">Livros Mais Emprestados</h2> -->
-
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -35,5 +33,6 @@
             @endforelse
         </tbody>
     </table>
+{{ $books->links() }}
 </div>
 @endsection

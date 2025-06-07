@@ -35,38 +35,24 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    
-    Route::resource('books', BookController::class)->middleware(['auth', 'isAdmin']);
-    
-    Route::resource('users', 'UserController')->middleware(['auth', 'isAdmin']);
-
+    Route::resource('books', BookController::class);//->middleware(['auth', 'isAdmin']);
+    Route::resource('users', 'UserController');//->middleware(['auth', 'isAdmin']);
     Route::get('/profile', 'ProfileController@show')->name('profile.show');
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
-
-
-    // Routes of pattern Loans-CRUD (except destroy/show now)
-    Route::get('loans', 'LoanController@index')->name('loans.index');
+    // Route::get('/api/books/search', [BookController::class, 'search']);
     Route::get('loans/create', 'LoanController@create')->name('loans.create');
     Route::post('loans', 'LoanController@store')->name('loans.store');
-
-    // Personalized Route for return
-    Route::post('loans/{id}/return', 'LoanController@return')->name('loans.return');
-
-    Route::get('audit-logs', 'AuditLogController@index')->name('audit-logs.index');
-
-    Route::get('reports/top-books', 'ReportController@topBooks')->name('reports.top-books');
-    Route::get('reports/top-users', 'ReportController@topUsers')->name('reports.top-users');
-
-    Route::get('reports/top-books/pdf', 'ReportController@topBooksPdf')->name('reports.top-books.pdf');
-    Route::get('reports/top-users/pdf', 'ReportController@topUsersPdf')->name('reports.top-users.pdf');
-
-    Route::get('my-loans', 'LoanController@userLoans')->name('loans.mine');   
-
+    Route::get('loans', 'LoanController@index')->name('loans.index');
+    Route::post('/loans/{loan}/return', 'LoanController@returnProcess')->name('loans.return.process');
     Route::get('track', 'LoanController@track')->name('loans.track');
-
+    Route::get('reports/top-books', 'ReportController@topBooks')->name('reports.top-books');
+    Route::get('reports/top-books/pdf', 'ReportController@topBooksPdf')->name('reports.top-books.pdf');
+    Route::get('reports/top-users', 'ReportController@topUsers')->name('reports.top-users');
+    Route::get('reports/top-users/pdf', 'ReportController@topUsersPdf')->name('reports.top-users.pdf');
+    Route::get('audit-logs', 'AuditLogController@index')->name('audit_logs.index');
+    Route::get('my-loans', 'LoanController@myLoans')->name('loans.my');   
     Route::get('catalog', 'BookController@catalog')->name('books.catalog');
 
 });

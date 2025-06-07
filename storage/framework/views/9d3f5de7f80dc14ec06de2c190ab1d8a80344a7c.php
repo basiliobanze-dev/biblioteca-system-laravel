@@ -1,4 +1,4 @@
-<h3>Usuários com Mais Empréstimos</h3>
+<h3 style="text-align: center;">👥 Relatório: Usuários com Mais Empréstimos</h3>
 <table width="100%" border="1" cellspacing="0" cellpadding="5">
     <thead>
         <tr>
@@ -9,12 +9,12 @@
         </tr>
     </thead>
     <tbody>
-        <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
             <td><?php echo e($index + 1); ?></td>
-            <td><?php echo e($user->user->name ?? 'Removido'); ?></td>
-            <td><?php echo e($user->user->email ?? '-'); ?></td>
-            <td><?php echo e($user->total); ?></td>
+            <td><?php echo e($item->user->name ?? 'Usuário removido'); ?></td>
+            <td><?php echo e($item->user->email ?? '-'); ?></td>
+            <td><?php echo e($item->total); ?></td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>

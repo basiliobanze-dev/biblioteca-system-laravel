@@ -1,4 +1,4 @@
-<h3>Usuários com Mais Empréstimos</h3>
+<h3 style="text-align: center;">👥 Relatório: Usuários com Mais Empréstimos</h3>
 <table width="100%" border="1" cellspacing="0" cellpadding="5">
     <thead>
         <tr>
@@ -9,12 +9,12 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($users as $index => $user)
+        @foreach ($users as $index => $item)
         <tr>
             <td>{{ $index + 1 }}</td>
-            <td>{{ $user->user->name ?? 'Removido' }}</td>
-            <td>{{ $user->user->email ?? '-' }}</td>
-            <td>{{ $user->total }}</td>
+            <td>{{ $item->user->name ?? 'Usuário removido' }}</td>
+            <td>{{ $item->user->email ?? '-' }}</td>
+            <td>{{ $item->total }}</td>
         </tr>
         @endforeach
     </tbody>

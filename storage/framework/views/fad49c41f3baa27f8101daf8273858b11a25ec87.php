@@ -7,8 +7,6 @@
         </a>
     </div>
 
-    <!-- <h2 class="form-check-label text-dark">Livros Mais Emprestados</h2> -->
-
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -33,6 +31,9 @@
             <?php endif; ?>
         </tbody>
     </table>
+<?php echo e($books->links()); ?>
+
 </div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/reports/top_books.blade.php ENDPATH**/ ?>

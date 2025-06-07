@@ -15,16 +15,16 @@ class CreateLoanItemsTable extends Migration
     {
         Schema::create('loan_items', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            
             $table->unsignedBigInteger('loan_id');
             $table->unsignedBigInteger('book_id');
-            $table->unsignedInteger('quantity');
-            $table->boolean('returned')->default(false);
-
+            $table->boolean('returned')->default(false); // individual status item
             $table->timestamps();
 
             $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+
+            $table->unique(['loan_id', 'book_id']); // not repeat the same book in a loan
         });
     }
 

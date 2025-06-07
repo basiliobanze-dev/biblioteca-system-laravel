@@ -51,12 +51,12 @@
                         <td>{{ $book->status }}</td>
                         <td>
                             <a href="{{ route('books.show', $book) }}" class="btn btn-sm btn-view"><i class="fas fa-eye"></i></a>
-                            <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>
+                            <!-- <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>
                             <form action="{{ route('books.destroy', $book) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-remove" onclick="return confirm('Tem certeza?')"><i class="fas fa-trash-alt"></i></button>
-                            </form>
+                            </form> -->
                         </td>
                     </tr>
                 @endforeach

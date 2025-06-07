@@ -44,6 +44,9 @@ class UserController extends Controller
             'role'     => $request->role,
         ]);
 
+
+        // Agora $user está definido corretamente
+        $this->logAudit('create', 'User', $user->id, 'Criou um novo usuário: ' . $user->name);
         return redirect()->route('users.index')->with('success', 'Usuário criado com sucesso!');
     }
 

@@ -1,4 +1,4 @@
-<h3>Livros Mais Emprestados</h3>
+<h3 style="text-align: center;">📚 Relatório: Livros Mais Emprestados</h3>
 <table width="100%" border="1" cellspacing="0" cellpadding="5">
     <thead>
         <tr>
@@ -18,4 +18,5 @@
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>
-</table><?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/reports/pdf_top_books.blade.php ENDPATH**/ ?>
+</table>
+<?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/reports/pdf_top_books.blade.php ENDPATH**/ ?>

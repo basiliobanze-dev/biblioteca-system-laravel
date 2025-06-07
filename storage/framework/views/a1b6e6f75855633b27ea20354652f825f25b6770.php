@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
-    <h2>Histórico de Ações no Sistema</h2>
+    <h2>Histórico de Ações de Empréstimo</h2>
 
     <table class="table table-bordered table-striped">
         <thead>

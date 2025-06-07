@@ -6,23 +6,30 @@ use Illuminate\Database\Eloquent\Model;
 
 class Loan extends Model
 {
-    protected $fillable = ['user_id', 'protocol', 'loan_date', 'due_date', 'returned_at', 'status','fine_amount'];
+    protected $fillable = ['user_id', 'loan_date', 'due_date', 'return_date', 'protocol', 'fine_amount', 'status'];
+
+    protected $casts = [
+        'loan_date' => 'datetime',
+        'due_date' => 'datetime',
+        'return_date' => 'datetime',
+    ];
+
 
     // Methd to return the name transla..
     public function getStatusLabelAttribute()
     {
         switch ($this->status) {
-            case 'borrowed':
-                return 'Emprestado';
+            case 'active':
+                return 'Ativo';
             case 'returned':
                 return 'Devolvido';
-            case 'late':
+            case 'overdue':
                 return 'Atrasado';
             default:
                 return ucfirst($this->status);
         }
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
