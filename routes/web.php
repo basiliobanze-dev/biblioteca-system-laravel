@@ -55,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('my-loans', 'LoanController@myLoans')->name('loans.my');   
     Route::get('catalog', 'BookController@catalog')->name('books.catalog');
 
+    Route::get('/reader/dashboard', 'LoanController@readerDashboard')->name('reader.dashboard');
+
 });
 
 

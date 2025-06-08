@@ -1,4 +1,4 @@
-<h3 style="text-align: center;">👥 Relatório: Usuários com Mais Empréstimos</h3>
+<h3 style="text-align: center;">Relatório: Usuários com Mais Empréstimos</h3>
 <table width="100%" border="1" cellspacing="0" cellpadding="5">
     <thead>
         <tr>

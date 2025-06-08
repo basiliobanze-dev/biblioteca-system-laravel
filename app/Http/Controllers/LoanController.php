@@ -203,6 +203,34 @@ class LoanController extends Controller
         return view('loans.my', compact('loans'));
     }
 
+    public function readerDashboard()
+    {
+        $userId = Auth::id();
+
+        // Contar total de livros com status "active" do usuário logado
+        $activeLoansCount = LoanItem::whereHas('loan', function ($query) use ($userId) {
+            $query->where('user_id', $userId)
+                ->where('status', 'active');
+        })->count();
+
+        // Pegar top 3 livros mais emprestados
+        $topBooks = LoanItem::select('book_id', DB::raw('COUNT(*) as total'))
+            ->groupBy('book_id')
+            ->orderByDesc('total')
+            ->with('book')
+            ->take(3)
+            ->get();
+
+        // Primeiro da lista como sugestão
+        $recommendedBook = $topBooks->first()->book ?? null;
+
+        // Total de livros disponíveis
+        $totalBooks = Book::count();
+
+        return view('dashboard.reader', compact('activeLoansCount', 'topBooks', 'recommendedBook', 'totalBooks'));
+    }
+
+
 }
 
 
