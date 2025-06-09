@@ -29,13 +29,15 @@
                     <p><i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> <?php echo e($user->account && $user->account->address ? $user->account->address : '---'); ?></p>
                 </div>
             </div>
+
+            <div class="profile-actions">
+                <a href="<?php echo e(route('users.index')); ?>" class="btn-close top-right"><i class="fas fa-times"></i></a>
+
+                <div class="action-buttons bottom-right">
+                    <a href="<?php echo e(route('profile.edit', $user)); ?>" class="btn-edit" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+                </div>
+            </div>
         </section>
-
-
-        <div class="profile-form-actions">
-            <a href="<?php echo e(route('profile.edit')); ?>" class="btn-edit-profile">Editar</a>
-            <a href="<?php echo e(route('home')); ?>" class="btn-back">Voltar</a>
-        </div>
     </div>
 
     <script>

@@ -50,7 +50,7 @@
                     <div class="card-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
-                    <h3>Sugestão do Bibliotecário</h3>
+                    <h3>Sugestão</h3>
                     <div class="book-recommendation">
                         <div class="book-cover-dashboard cover">
                             @if(isset($recommendedBook->cover_image))

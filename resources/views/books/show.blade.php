@@ -56,7 +56,20 @@
                 <span class="value">{{ $book->quantity_available }}</span>
             </div>
 
-            <a href="{{ route('books.index') }}" class="btn-back2"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <div class="book-actions">
+                <a href="{{ route('books.index') }}" class="btn-close top-right"><i class="fas fa-times"></i></a>
+
+                <div class="action-buttons bottom-right">
+                    <a href="{{ route('books.edit', $book) }}" class="btn-edit" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+                    <form action="{{ route('books.destroy', $book) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn-remove" title="Remover" onclick="return confirm('Tem certeza?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

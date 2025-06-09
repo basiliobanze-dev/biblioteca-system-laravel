@@ -33,12 +33,22 @@
                     <p><i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> {{ $user->account && $user->account->address ? $user->account->address : '---' }}</p>
                 </div>
             </div>
-        </section>
 
-        <div class="profile-form-actions">
-            <!-- <a href="{{ route('users.index') }}" class="btn-back">Voltar</a> -->
-            <a href="{{ route('users.index') }}" class="btn-user-back">Voltar</a>
-        </div>
+            <div class="profile-actions">
+                <a href="{{ route('users.index') }}" class="btn-close top-right"><i class="fas fa-times"></i></a>
+
+                <div class="action-buttons bottom-right">
+                    <a href="{{ route('users.edit', $user) }}" class="btn-edit" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+                    <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn-remove" title="Remover" onclick="return confirm('Tem certeza?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </div>
 @endsection
 

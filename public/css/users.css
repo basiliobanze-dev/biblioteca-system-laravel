@@ -36,18 +36,45 @@
 
 
 /* USER DETAIL */
-/* USING STYLES OF PROFILE CONTAINER... */
-/* BTN */
-.btn-user-back {
-    background-color: #F0F4F5;
-    color: #37474F;
-    border: 1px solid #1ABC9C;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+/* USER PROFILE ACTION */
+.profile-actions .btn-close.top-right {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.2rem;
+    color: #888;
     text-decoration: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
-.btn-user-back:hover {
-    background-color: #E0F7F5;
+.profile-actions .action-buttons.bottom-right {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.profile-actions .btn-edit,
+.profile-actions .btn-remove {
+    background-color: #00BFA6;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    /* border-radius: 47%; */
+    transition: background-color 0.3s ease;
+}
+
+.profile-actions .btn-edit:hover,
+.profile-actions .btn-remove:hover {
+    background-color: #009C8B;
+}
+
+.profile-actions .btn-remove:hover {
+    background-color: #009C8B;
 }

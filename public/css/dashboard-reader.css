@@ -171,7 +171,7 @@ Estilos gerais
 .book-cover-dashboard {
     width: 50px;
     height: 70px;
-    background: #1D2A3A;
+    background: #00BFA6;
     color: white;
     display: flex;
     align-items: center;
@@ -181,10 +181,11 @@ Estilos gerais
 }
 
 .book-cover-dashboard.large {
-    width: 80px;
+    width: 75px;
     height: 110px;
     font-size: 1.8rem;
     margin: 0 auto 1rem;
+    border: 2px solid #1D2A3A;
 }
 
 .book-info h4 {

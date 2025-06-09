@@ -31,12 +31,22 @@
                     <p><i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> <?php echo e($user->account && $user->account->address ? $user->account->address : '---'); ?></p>
                 </div>
             </div>
-        </section>
 
-        <div class="profile-form-actions">
-            <!-- <a href="<?php echo e(route('users.index')); ?>" class="btn-back">Voltar</a> -->
-            <a href="<?php echo e(route('users.index')); ?>" class="btn-user-back">Voltar</a>
-        </div>
+            <div class="profile-actions">
+                <a href="<?php echo e(route('users.index')); ?>" class="btn-close top-right"><i class="fas fa-times"></i></a>
+
+                <div class="action-buttons bottom-right">
+                    <a href="<?php echo e(route('users.edit', $user)); ?>" class="btn-edit" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+                    <form action="<?php echo e(route('users.destroy', $user)); ?>" method="POST" style="display:inline;">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
+                        <button class="btn-remove" title="Remover" onclick="return confirm('Tem certeza?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </div>
 <?php $__env->stopSection(); ?>
 

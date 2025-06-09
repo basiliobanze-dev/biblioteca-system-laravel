@@ -54,7 +54,20 @@
                 <span class="value"><?php echo e($book->quantity_available); ?></span>
             </div>
 
-            <a href="<?php echo e(route('books.index')); ?>" class="btn-back2"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <div class="book-actions">
+                <a href="<?php echo e(route('books.index')); ?>" class="btn-close top-right"><i class="fas fa-times"></i></a>
+
+                <div class="action-buttons bottom-right">
+                    <a href="<?php echo e(route('books.edit', $book)); ?>" class="btn-edit" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+                    <form action="<?php echo e(route('books.destroy', $book)); ?>" method="POST" style="display:inline;">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
+                        <button class="btn-remove" title="Remover" onclick="return confirm('Tem certeza?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 <?php $__env->stopSection(); ?>

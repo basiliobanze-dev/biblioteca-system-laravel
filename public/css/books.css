@@ -126,37 +126,37 @@ button.search-button,
 }
 
 .table td, .table th {
-  padding: 10px;
-  border-bottom: 1px solid #00BFA6;
+    padding: 10px;
+    border-bottom: 1px solid #00BFA6;
 }
 
 .table td .btn {
-  margin: 0 2px;
-  padding: 5px 8px;
-  font-size: 14px;
-  border: none;
-  color: white;
-  border-radius: 3px;
+    margin: 0 2px;
+    padding: 5px 8px;
+    font-size: 14px;
+    border: none;
+    color: white;
+    border-radius: 3px;
 }
 
 .btn-view {
-  background-color: #263442;    
+    background-color: #263442;    
 }
 .btn-edit {
-  background-color: #f1c40f;
+    background-color: #f1c40f;
 }
 .btn-remove {
-  background-color: #e74c3c;
+    background-color: #e74c3c;
 }
 
 .btn-view:hover {
-  background-color: #1f2a35;
+    background-color: #1f2a35;
 }
 .btn-edit:hover {
-  background-color: #d4ac0d;
+    background-color: #d4ac0d;
 }
 .btn-remove:hover {
-  background-color: #c0392b;
+    background-color: #c0392b;
 }
 
 /* BOOKS FORM */
@@ -365,18 +365,47 @@ button.search-button,
     margin-right: 6px;
 }
 
-.btn-back2 {
-    margin-top: 30px;
-    display: inline-block;
-    text-decoration: none;
-    background-color: #00BFA6;
-    color: white;
-    padding: 10px 25px;
+/* .book-details-container {
+    position: relative;
+    padding: 2rem;
+    background: #fdfdfd;
     border-radius: 8px;
-    text-align: center;
-    transition: background 0.3s;
+} */
+
+.book-actions .btn-close.top-right {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.2rem;
+    color: #999;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
-.btn-back2:hover {
+.book-actions .action-buttons.bottom-right {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.book-actions .btn-edit,
+.book-actions .btn-remove {
+    background-color: #00BFA6;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    border-radius: 47%;
+    transition: background-color 0.3s ease;
+}
+
+.book-actions .btn-edit:hover,
+.book-actions .btn-remove:hover {
     background-color: #009C8B;
 }
