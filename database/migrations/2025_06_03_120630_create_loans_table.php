@@ -22,7 +22,7 @@ class CreateLoansTable extends Migration
             $table->dateTime('return_date')->nullable(); // real return date
             $table->string('protocol')->unique();  // unique loan code
             $table->decimal('fine_amount', 8, 2)->default(0); // fine
-            $table->enum('status', ['active', 'returned', 'overdue'])->default('active');
+            $table->enum('status', ['active', 'returned', 'pending'])->default('active');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

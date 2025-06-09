@@ -7,7 +7,7 @@
     <div class="offcanvas-body d-flex flex-column justify-content-between">
         <div>
             <ul class="list-unstyled">
-                <li><a href="{{ route('home') }}" class="nav-link"><i class="fa-solid fa-house"></i> Início</a></li>
+                <li><a href="{{ route('dashboard') }}" class="nav-link"><i class="fa-solid fa-house"></i> Início</a></li>
                 <li><a href="{{ route('books.index') }}" class="nav-link"><i class="fa-solid fa-book"></i> Livros</a></li>
                 <li><a href="{{ route('users.index') }}" class="nav-link"><i class="fa-solid fa-users"></i> Usuários</a></li>
             </ul>

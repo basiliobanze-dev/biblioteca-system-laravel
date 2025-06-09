@@ -23,8 +23,8 @@ class Loan extends Model
                 return 'Ativo';
             case 'returned':
                 return 'Devolvido';
-            case 'overdue':
-                return 'Atrasado';
+            case 'pending':
+                return 'Pendente';
             default:
                 return ucfirst($this->status);
         }

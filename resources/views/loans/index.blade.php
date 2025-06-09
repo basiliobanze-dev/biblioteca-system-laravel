@@ -18,8 +18,9 @@
         <input type="text" name="user" placeholder="Buscar por usuário..." class="form-control" value="{{ request('user') }}">
         <input type="text" name="book" placeholder="Buscar por livro..." class="form-control" value="{{ request('book') }}">
         <select name="status" class="form-select">
-            <option value="">-- Todos --</option>
-            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Somente Ativos</option>
+            <option value="">Todos</option>
+            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Ativos</option>
+            <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pendentes</option>
         </select>
         <button class="btn btn-outline-primary">Filtrar</button>
     </form>
@@ -34,7 +35,7 @@
                 <th>Devolução</th>
                 <th>Estado</th>
                 <th>Multa</th>
-                <th>Ações</th>
+                <th>Ações/Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -48,7 +49,7 @@
                     @if($loan->return_date)
                         {{ \Carbon\Carbon::parse($loan->return_date)->format('d/m/Y H:i') }}
                     @else
-                        Ainda não devolvido
+                        ————————
                     @endif
                 </td>
                 <td>
@@ -65,12 +66,15 @@
                         <form action="{{ route('loans.return.process', $loan) }}" method="POST" style="display:inline;">
                             @csrf
                             <input type="hidden" name="return_date" value="{{ now()->format('Y-m-d H:i:s') }}">
-                            <!-- <input type="hidden" name="return_date" value="{{ $loan->due_date->addDays(3)->format('Y-m-d H:i:s') }}"> -->
-
-                            <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Confirma a devolução deste empréstimo?')">Registrar Devolução</button>
+                            <button type="submit" class="btn btn-sm btn-warning">Registrar Devolução</button>
+                        </form>
+                    @elseif($loan->status === 'pending' && auth()->user()->role === 'admin')
+                        <form action="{{ route('loans.approve', $loan) }}" method="POST" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-success">Confirmar Empréstimo</button>
                         </form>
                     @else
-                        <span class="text-muted">Devolvido</span>
+                        <span class="text-muted">{{ ucfirst($loan->status_label) }}</span>
                     @endif
                 </td>
             </tr>

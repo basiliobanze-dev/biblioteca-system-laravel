@@ -20,7 +20,7 @@
                     <h3>Meus Empréstimos</h3>
                     <div class="book-counter">
                         <span class="counter-number">{{ $activeLoansCount ?? '0' }}</span>
-                        <span class="counter-label">livros com você</span>
+                        <span class="counter-label">emprestados</span>
                     </div>
                     <a href="{{ route('loans.my') }}" class="card-button">
                         <i class="fas fa-chevron-right"></i> Ver todos
@@ -37,7 +37,7 @@
                     <h3>Explorar Catálogo</h3>
                     <p class="card-text">Nossa biblioteca possui <strong>{{ $totalBooks ?? '1,240' }} títulos</strong> disponíveis para descoberta.</p>
                     <div class="library-stamp">DISPO<br>NÍVEL</div>
-                    <a href="{{ route('books.catalog') }}" class="card-button">
+                    <a href="{{ route('loans.request') }}" class="card-button">
                         <i class="fas fa-book-open"></i> Buscar Livros
                     </a>
                 </div>
@@ -65,7 +65,7 @@
                             <p class="book-author">{{ $recommendedBook->author ?? 'Patrick Rothfuss' }}</p>
                         </div>
                     </div>
-                    <a href="{{ route('books.show', $recommendedBook->id ?? 0) }}" class="card-button">
+                    <a href="{{ route('books.user_show', $recommendedBook->id ?? 0) }}" class="card-button">
                         <i class="fas fa-chevron-right"></i> Ver detalhes
                     </a>
                 </div>

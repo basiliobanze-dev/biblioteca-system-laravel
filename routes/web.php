@@ -10,10 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\LoanController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
     Auth::routes();
 
@@ -32,7 +33,6 @@ Route::get('/', function () {
     Route::middleware(['auth'])->get('/reader/dashboard', function () {
         return view('dashboard.reader');
     })->name('reader.dashboard');
-
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -54,8 +54,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('audit-logs', 'AuditLogController@index')->name('audit_logs.index');
     Route::get('my-loans', 'LoanController@myLoans')->name('loans.my');   
     Route::get('catalog', 'BookController@catalog')->name('books.catalog');
-
     Route::get('/reader/dashboard', 'LoanController@readerDashboard')->name('reader.dashboard');
+    Route::get('book-detail/{book}', 'BookController@userShow')->name('books.user_show');
+    Route::post('/loans/{loan}/approve', 'LoanController@approve')->name('loans.approve');
+    Route::get('/loans/request', 'LoanController@requestForm')->name('loans.request');
 
 });
 

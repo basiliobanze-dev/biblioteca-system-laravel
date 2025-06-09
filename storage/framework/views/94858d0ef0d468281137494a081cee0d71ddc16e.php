@@ -16,8 +16,9 @@
         <input type="text" name="user" placeholder="Buscar por usuário..." class="form-control" value="<?php echo e(request('user')); ?>">
         <input type="text" name="book" placeholder="Buscar por livro..." class="form-control" value="<?php echo e(request('book')); ?>">
         <select name="status" class="form-select">
-            <option value="">-- Todos --</option>
-            <option value="active" <?php echo e(request('status') == 'active' ? 'selected' : ''); ?>>Somente Ativos</option>
+            <option value="">Todos</option>
+            <option value="active" <?php echo e(request('status') == 'active' ? 'selected' : ''); ?>>Ativos</option>
+            <option value="pending" <?php echo e(request('status') == 'pending' ? 'selected' : ''); ?>>Pendentes</option>
         </select>
         <button class="btn btn-outline-primary">Filtrar</button>
     </form>
@@ -32,7 +33,7 @@
                 <th>Devolução</th>
                 <th>Estado</th>
                 <th>Multa</th>
-                <th>Ações</th>
+                <th>Ações/Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +48,7 @@
                         <?php echo e(\Carbon\Carbon::parse($loan->return_date)->format('d/m/Y H:i')); ?>
 
                     <?php else: ?>
-                        Ainda não devolvido
+                        ————————
                     <?php endif; ?>
                 </td>
                 <td>
@@ -66,12 +67,15 @@
                         <form action="<?php echo e(route('loans.return.process', $loan)); ?>" method="POST" style="display:inline;">
                             <?php echo csrf_field(); ?>
                             <input type="hidden" name="return_date" value="<?php echo e(now()->format('Y-m-d H:i:s')); ?>">
-                            <!-- <input type="hidden" name="return_date" value="<?php echo e($loan->due_date->addDays(3)->format('Y-m-d H:i:s')); ?>"> -->
-
-                            <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Confirma a devolução deste empréstimo?')">Registrar Devolução</button>
+                            <button type="submit" class="btn btn-sm btn-warning">Registrar Devolução</button>
+                        </form>
+                    <?php elseif($loan->status === 'pending' && auth()->user()->role === 'admin'): ?>
+                        <form action="<?php echo e(route('loans.approve', $loan)); ?>" method="POST" style="display:inline;">
+                            <?php echo csrf_field(); ?>
+                            <button type="submit" class="btn btn-sm btn-success">Confirmar Empréstimo</button>
                         </form>
                     <?php else: ?>
-                        <span class="text-muted">Devolvido</span>
+                        <span class="text-muted"><?php echo e(ucfirst($loan->status_label)); ?></span>
                     <?php endif; ?>
                 </td>
             </tr>

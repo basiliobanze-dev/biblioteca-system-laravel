@@ -21,6 +21,7 @@ class LoanController extends Controller
     {
         $loans = Loan::with(['user', 'items.book'])
         ->when($request->status === 'active', fn($q) => $q->where('status', 'active'))
+        ->when($request->status === 'pending', fn($q) => $q->where('status', 'pending'))
         ->when($request->user, fn($q, $user) =>
             $q->whereHas('user', fn($sub) =>
                 $sub->where('name', 'like', "%$user%")
@@ -87,12 +88,23 @@ class LoanController extends Controller
             }
 
             // Cria empréstimo
+            // $loan = Loan::create([
+            //     'user_id' => $request->user_id,
+            //     'loan_date' => now(),
+            //     'due_date' => $request->due_date,
+            //     'protocol' => $this->generateProtocol(),
+            //     'status' => 'active',
+            // ]);
+            // Verifica se é um reader
+            $isReader = auth()->user()->role === 'reader';
+
+            // Cria empréstimo
             $loan = Loan::create([
-                'user_id' => $request->user_id,
+                'user_id' => $isReader ? auth()->id() : $request->user_id,
                 'loan_date' => now(),
                 'due_date' => $request->due_date,
                 'protocol' => $this->generateProtocol(),
-                'status' => 'active',
+                'status' => $isReader ? 'pending' : 'active',
             ]);
 
             foreach ($request->book_ids as $book_id) {
@@ -101,20 +113,24 @@ class LoanController extends Controller
                     'book_id' => $book_id,
                 ]);
 
-                // Decrementa disponibilidade
-                $book = Book::find($book_id);
-                $book->quantity_available -= 1;
-                $book->save();
+                // Só decrementa o estoque se o empréstimo for ativo (admin/librarian)
+                if (!$isReader) {
+                    $book = Book::find($book_id);
+                    $book->quantity_available -= 1;
+                    $book->save();
+                }
             }
 
             DB::commit();
 
             AuditLog::create([
                 'user_id' => auth()->id(),
-                'action' => 'criação de empréstimo',
+                'action' => $isReader ? 'solicitação de empréstimo' : 'criação de empréstimo',
                 'target_type' => 'Empréstimo',
                 'target_id' => $loan->id,
-                'description' => 'Criou o empréstimo ' . $loan->protocol . ' para ' . $loan->user->name,
+                'description' => $isReader
+                    ? 'Usuário solicitou empréstimo ' . $loan->protocol
+                    : 'Criou o empréstimo ' . $loan->protocol . ' para ' . $loan->user->name,
             ]);
             return redirect()->route('loans.index')->with('success', 'Empréstimo registrado com sucesso!');
         
@@ -228,6 +244,51 @@ class LoanController extends Controller
         $totalBooks = Book::count();
 
         return view('dashboard.reader', compact('activeLoansCount', 'topBooks', 'recommendedBook', 'totalBooks'));
+    }
+
+    public function requestForm()
+    {
+        $books = Book::where('quantity_available', '>', 0)->get();
+
+        return view('loans.request', compact('books'));
+    }
+
+    public function approve(Loan $loan)
+    {
+        // Verificar se o usuário tem permissão para aprovar
+        if (auth()->user()->role !== 'admin') {
+            return back()->with('error', 'Você não tem permissão para confirmar empréstimos.');
+        }
+
+        if ($loan->status !== 'pending') {
+            return back()->with('error', 'Esse empréstimo já foi confirmado ou não está pendente.');
+        }
+
+        DB::transaction(function () use ($loan) {
+            // Atualizar o empréstimo
+            $loan->update([
+                'status' => 'active',
+                'loan_date' => now() // Definir a data de empréstimo como agora
+            ]);
+
+            // Atualizar o estoque dos livros
+            foreach ($loan->items as $item) {
+                $book = $item->book;
+                if ($book->quantity_available <= 0) {
+                    throw new \Exception("O livro {$book->title} não está mais disponível.");
+                }
+                $book->decrement('quantity_available');
+            }
+        });
+
+        AuditLog::create([
+            'user_id' => auth()->id(),
+            'action' => 'confirmação de empréstimo',
+            'target_type' => 'Empréstimo',
+            'target_id' => $loan->id,
+            'description' => 'Confirmou o empréstimo ' . $loan->protocol,
+        ]);
+        return back()->with('success', 'Empréstimo confirmado com sucesso!');
     }
 
 

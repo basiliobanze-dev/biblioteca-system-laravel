@@ -177,7 +177,7 @@ button.search-button,
 
 .form-label {
     margin-bottom: 8px;
-    color: #00BFA6;
+    color: white;
 }
 
 .form-input,
@@ -401,7 +401,7 @@ button.search-button,
     padding: 8px 10px;
     border-radius: 4px;
     font-size: 1rem;
-    border-radius: 47%;
+    /* border-radius: 47%; */
     transition: background-color 0.3s ease;
 }
 
