@@ -17,7 +17,7 @@
                 <td><?php echo e($loan->loan_date->format('d/m/Y H:i')); ?></td>
                 <td><?php echo e($loan->due_date->format('d/m/Y')); ?></td>
                 <td>
-                    <?php echo e($loan->return_date ? $loan->return_date->format('d/m/Y H:i') : 'Ainda não devolvido'); ?>
+                    <?php echo e($loan->return_date ? $loan->return_date->format('d/m/Y H:i') : '————————'); ?>
 
                 </td>
                 <td>

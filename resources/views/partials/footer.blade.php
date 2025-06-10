@@ -56,5 +56,5 @@
 </footer>
 
 <script>
-  document.getElementById('ano').textContent = new Date().getFullYear();
+    document.getElementById('ano').textContent = new Date().getFullYear();
 </script>

@@ -10,13 +10,11 @@
     </p>
     <p><strong>Multa:</strong> <?php echo e(number_format($loan->fine_amount, 2, ',', '.')); ?> MZN</p>
 
-    <hr>
-    <h4>Livros Emprestados</h4>
+    <h4>Livros:</h4>
     <ul>
         <?php $__currentLoopData = $loan->items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <li>
-                <?php echo e($item->book->title); ?> — 
-                <strong>Status:</strong> <?php echo e($item->returned ? 'Devolvido' : '————————'); ?>
+                <?php echo e($item->book->title); ?>
 
             </li>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

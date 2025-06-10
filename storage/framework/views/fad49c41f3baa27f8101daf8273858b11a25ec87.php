@@ -31,7 +31,7 @@
                 <?php endif; ?>
             </tbody>
         </table>
-    <?php echo e($books->links()); ?>
+        <?php echo e($books->links()); ?>
 
     </div>
 <?php $__env->stopSection(); ?>

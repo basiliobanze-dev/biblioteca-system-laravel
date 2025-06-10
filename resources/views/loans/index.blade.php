@@ -14,72 +14,60 @@
         </form>
     </div>
 
-    <form method="GET" action="{{ route('loans.index') }}" class="d-flex gap-2 mb-3">
-        <input type="text" name="user" placeholder="Buscar por usuário..." class="form-control" value="{{ request('user') }}">
-        <input type="text" name="book" placeholder="Buscar por livro..." class="form-control" value="{{ request('book') }}">
+    <form id="search-form" class="d-flex gap-2 mb-3">
+        <input type="text" name="user" placeholder="Buscar por usuário..." class="form-control" value="">
+        <input type="text" name="book" placeholder="Buscar por livro..." class="form-control" value="">
         <select name="status" class="form-select">
             <option value="">Todos</option>
-            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Ativos</option>
-            <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pendentes</option>
+            <option value="active">Ativos</option>
+            <option value="pending">Pendentes</option>
         </select>
-        <button class="btn btn-outline-primary">Filtrar</button>
     </form>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Usuário</th>
-                <th>Data</th>
-                <th>Data Prev.</th>
-                <th>Devolução</th>
-                <th>Estado</th>
-                <th>Multa</th>
-                <th>Ações/Estado</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($loans as $loan)
-            <tr>
-                <td>{{ $loan->protocol }}</td>
-                <td>{{ $loan->user->name }}</td>
-                <td>{{ $loan->loan_date->format('d/m/Y H:i') }}</td>
-                <td>{{ $loan->due_date->format('d/m/Y') }}</td>
-                <td>
-                    @if($loan->return_date)
-                        {{ \Carbon\Carbon::parse($loan->return_date)->format('d/m/Y H:i') }}
-                    @else
-                        ————————
-                    @endif
-                </td>
-                <td>
-                    @if($loan->status === 'active' && now()->gt($loan->due_date))
-                        {{ ucfirst($loan->status_label) }}
-                    @else
-                        {{ ucfirst($loan->status_label) }}
-                    @endif
-                </td>
-                <!-- <td>{{ number_format($loan->fine_amount, 2, ',', '.') }}</td> -->
-                <td>{{ number_format($loan->calculated_fine ?? 0, 2, ',', '.') }}</td>
-                <td>
-                    @if($loan->status === 'active')
-                        <form action="{{ route('loans.return.process', $loan) }}" method="POST" style="display:inline;">
-                            @csrf
-                            <input type="hidden" name="return_date" value="{{ now()->format('Y-m-d H:i:s') }}">
-                            <button type="submit" class="btn btn-sm btn-warning">Registrar Devolução</button>
-                        </form>
-                    @elseif($loan->status === 'pending' && auth()->user()->role === 'admin')
-                        <form action="{{ route('loans.approve', $loan) }}" method="POST" style="display:inline;">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-success">Confirmar Empréstimo</button>
-                        </form>
-                    @else
-                        <span class="text-muted">{{ ucfirst($loan->status_label) }}</span>
-                    @endif
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{ $loans->links() }}
+    <div id="loan-results">
+        @include('loans.list', ['loans' => $loans])
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const alert = document.getElementById('success-alert');
+            if (alert) {
+                setTimeout(() => {
+                    alert.style.transition = 'opacity 0.5s ease';
+                    alert.style.opacity = '0';
+                    setTimeout(() => alert.remove(), 500); // remove após o fade
+                }, 3000); // 3 segundos
+            }
+        });
+    </script>
 @endsection
+
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            const $form = $('#search-form');
+
+            function fetchResults() {
+                let data = $form.serialize();
+
+                $.ajax({
+                    url: "{{ route('loans.index') }}",
+                    method: 'GET',
+                    data: data,
+                    success: function (response) {
+                        $('#loan-results').html(response);
+                    },
+                    error: function () {
+                        alert('Erro ao buscar dados. Tente novamente.');
+                    }
+                });
+            }
+
+            $form.on('input change', 'input, select', function () {
+                fetchResults();
+            });
+        });
+    </script>
+@endpush
+

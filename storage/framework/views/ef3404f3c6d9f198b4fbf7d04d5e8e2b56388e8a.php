@@ -9,7 +9,7 @@
                 <img id="preview" src="https://ui-avatars.com/api/?name=<?php echo e(urlencode($user->name)); ?>&background=ccc&color=555&size=100&rounded=true" alt="Avatar Padrão">
             <?php endif; ?>
         </label>
-        <p class="upload-hint">Clique para alterar</p>
+        <p class="upload-hint">Clique na imagem para alterar</p>
     </div>
 
 <!-- C2 -->

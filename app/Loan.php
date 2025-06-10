@@ -25,6 +25,8 @@ class Loan extends Model
                 return 'Devolvido';
             case 'pending':
                 return 'Pendente';
+            case 'expired':
+                return 'Expirado';
             default:
                 return ucfirst($this->status);
         }

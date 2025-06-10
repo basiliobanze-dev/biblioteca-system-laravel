@@ -1,5 +1,4 @@
 <?php $__env->startSection('content'); ?>
-
     <?php if(session('success')): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
             <?php echo e(session('success')); ?>
@@ -57,7 +56,6 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
-
         <?php echo e($users->links()); ?>
 
     </div>

@@ -7,8 +7,11 @@
             </div>
         </div>
 
+        <?php if(session('success')): ?>
+            <div class="alert alert-success"><?php echo e(session('success')); ?></div>
+        <?php endif; ?>
+
         <div class="dashboard-grid">
-            <!-- Cartão de Estatísticas com Estilo de Etiqueta de Livro -->
             <div class="dashboard-card book-card">
                 <div class="card-spine" style="background-color: #00BFA6;"></div>
                 <div class="card-content">
@@ -26,7 +29,6 @@
                 </div>
             </div>
 
-            <!-- Cartão de Catálogo com Estilo de Ficha Catalográfica -->
             <div class="dashboard-card catalog-card">
                 <div class="card-content">
                     <div class="card-icon">
@@ -41,7 +43,6 @@
                 </div>
             </div>
 
-            <!-- Cartão de Recomendações com Estilo de Página de Livro -->
             <div class="dashboard-card recommendation-card">
                 <div class="page-fold"></div>
                 <div class="card-content">
@@ -59,8 +60,8 @@
                         </div>
 
                         <div class="book-info">
-                            <h4><?php echo e($recommendedBook->title ?? 'O Nome do Vento'); ?></h4>
-                            <p class="book-author"><?php echo e($recommendedBook->author ?? 'Patrick Rothfuss'); ?></p>
+                            <h4><?php echo e($recommendedBook->title ?? 'Title'); ?></h4>
+                            <p class="book-author"><?php echo e($recommendedBook->author ?? 'Author'); ?></p>
                         </div>
                     </div>
                     <a href="<?php echo e(route('books.user_show', $recommendedBook->id ?? 0)); ?>" class="card-button">
@@ -69,7 +70,6 @@
                 </div>
             </div>
 
-            <!-- Cartão de Novidades com Estilo de Jornal -->
             <div class="dashboard-card news-card">
                 <div class="news-header">
                     <h3><i class="fas fa-newspaper"></i> Biblioteca News</h3>
@@ -86,7 +86,6 @@
             </div>
         </div>
 
-        <!-- Seção de Destaques -->
         <div class="featured-section">
             <h2><i class="fas fa-star"></i>Mais Emprestados</h2>
             <div class="featured-books">
@@ -106,5 +105,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const alert = document.getElementById('success-alert');
+            if (alert) {
+                setTimeout(() => {
+                    alert.style.transition = 'opacity 0.5s ease';
+                    alert.style.opacity = '0';
+                    setTimeout(() => alert.remove(), 500); // remove após o fade
+                }, 3000); // 3 segundos
+            }
+        });
+    </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/dashboard/reader.blade.php ENDPATH**/ ?>

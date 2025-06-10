@@ -25,13 +25,11 @@
                 <input type="date" name="due_date" class="form-control" required min="<?php echo e(now()->addDay()->format('Y-m-d')); ?>">
             </div>
 
-            <!-- Campo de pesquisa -->
             <div class="mb-3">
                 <label for="book_search" class="form-label">Pesquisar Livro</label>
                 <input type="text" id="book_search" class="form-control" placeholder="Pesquisar por título, autor ou ano...">
             </div>
 
-            <!-- Lista de livros com checkboxes -->
             <div id="book_list" class="row">
                 <?php $__empty_1 = true; $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <div class="col-md-4 mb-3 book-item">

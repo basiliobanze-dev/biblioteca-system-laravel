@@ -19,6 +19,12 @@ class LoanController extends Controller
 {
     public function index(Request $request)
     {
+        // Automatically expires than 24 hour
+        Loan::where('status', 'pending')
+        ->where('created_at', '<', now()->subHours(24)) 
+        // ->where('created_at', '<', now()->subMinutes(2))
+        ->update(['status' => 'expired']);
+
         $loans = Loan::with(['user', 'items.book'])
         ->when($request->status === 'active', fn($q) => $q->where('status', 'active'))
         ->when($request->status === 'pending', fn($q) => $q->where('status', 'pending'))
@@ -36,20 +42,8 @@ class LoanController extends Controller
         ->orderByDesc('loan_date')
         ->paginate(20);
 
-
-        // Calcular multa prevista para empréstimos ativos
-        foreach ($loans as $loan) {
-            if ($loan->status === 'active') {
-                $now = now();
-                if ($now->gt($loan->due_date)) {
-                    $daysLate = $loan->due_date->diffInDays($now);
-                    $loan->calculated_fine = $daysLate * 100;
-                } else {
-                    $loan->calculated_fine = 0;
-                }
-            } else {
-                $loan->calculated_fine = $loan->fine_amount; // multa já calculada e salva
-            }
+        if ($request->ajax()) {
+            return view('loans.list', compact('loans'))->render();
         }
 
         return view('loans.index', compact('loans'));
@@ -76,7 +70,7 @@ class LoanController extends Controller
         DB::beginTransaction();
 
         try {
-            // Verifica se o usuário já tem 3 livros ativos
+            // Verify if user already has 3 active books
             $activeLoans = Loan::where('user_id', $request->user_id)
                 ->where('status', 'active')
                 ->withCount('items')
@@ -87,18 +81,10 @@ class LoanController extends Controller
                 return back()->with('error', 'Usuário excedeu o limite de 3 livros.');
             }
 
-            // Cria empréstimo
-            // $loan = Loan::create([
-            //     'user_id' => $request->user_id,
-            //     'loan_date' => now(),
-            //     'due_date' => $request->due_date,
-            //     'protocol' => $this->generateProtocol(),
-            //     'status' => 'active',
-            // ]);
-            // Verifica se é um reader
+            // Verify if is reader
             $isReader = auth()->user()->role === 'reader';
 
-            // Cria empréstimo
+            // Create loan
             $loan = Loan::create([
                 'user_id' => $isReader ? auth()->id() : $request->user_id,
                 'loan_date' => now(),
@@ -113,7 +99,7 @@ class LoanController extends Controller
                     'book_id' => $book_id,
                 ]);
 
-                // Só decrementa o estoque se o empréstimo for ativo (admin/librarian)
+            // Only decrement the stock if the loan is active (admin/librarian)
                 if (!$isReader) {
                     $book = Book::find($book_id);
                     $book->quantity_available -= 1;
@@ -132,8 +118,10 @@ class LoanController extends Controller
                     ? 'Usuário solicitou empréstimo ' . $loan->protocol
                     : 'Criou o empréstimo ' . $loan->protocol . ' para ' . $loan->user->name,
             ]);
-            return redirect()->route('loans.index')->with('success', 'Empréstimo registrado com sucesso!');
-        
+            return $isReader
+                ? redirect()->route('reader.dashboard')->with('success', 'Solicitação enviada com sucesso!')
+                : redirect()->route('loans.index')->with('success', 'Empréstimo registrado com sucesso!'
+            );
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->with('error', 'Erro ao registrar empréstimo.');
@@ -153,27 +141,27 @@ class LoanController extends Controller
     {
         $request->validate([
             'return_date' => 'required|date',
-            // removi validação de multa porque não vai mais ser recebida do formulário
+        // remove fine validation because it will no longer be received from the form
         ]);
 
         DB::transaction(function () use ($loan, $request) {
             $returnDate = Carbon::parse($request->return_date);
 
-            // Calcula multa automaticamente (100 MZN por dia de atraso)
+            // Automatically calculate fine
             $autoFine = 0;
             if ($returnDate->gt($loan->due_date)) {
                 $daysLate = $loan->due_date->diffInDays($returnDate);
-                $autoFine = $daysLate * 100; // 100 MZN por dia
+                $autoFine = $daysLate * 100; // 100 MZN/day
             }
 
-            // Atualiza empréstimo
+            // Update loan
             $loan->update([
                 'return_date' => $returnDate,
                 'status' => 'returned',
                 'fine_amount' => $autoFine,
             ]);
 
-            // Atualiza estoque dos livros e marca itens como devolvidos
+            // Update books stock and set returned
             foreach ($loan->items as $item) {
                 $item->update(['returned' => true]);
                 $item->book->increment('quantity_available');
@@ -208,7 +196,6 @@ class LoanController extends Controller
         return view('loans.track', compact('loan'));
     }
 
-
     public function myLoans()
     {
         $loans = Loan::with('items.book')
@@ -223,13 +210,13 @@ class LoanController extends Controller
     {
         $userId = Auth::id();
 
-        // Contar total de livros com status "active" do usuário logado
+        // count total books with status "active" of user loged
         $activeLoansCount = LoanItem::whereHas('loan', function ($query) use ($userId) {
             $query->where('user_id', $userId)
                 ->where('status', 'active');
         })->count();
 
-        // Pegar top 3 livros mais emprestados
+        // Get top 3 most borrowed books
         $topBooks = LoanItem::select('book_id', DB::raw('COUNT(*) as total'))
             ->groupBy('book_id')
             ->orderByDesc('total')
@@ -237,10 +224,10 @@ class LoanController extends Controller
             ->take(3)
             ->get();
 
-        // Primeiro da lista como sugestão
+        // First on the list as a suggestion
         $recommendedBook = $topBooks->first()->book ?? null;
 
-        // Total de livros disponíveis
+        // Total books available
         $totalBooks = Book::count();
 
         return view('dashboard.reader', compact('activeLoansCount', 'topBooks', 'recommendedBook', 'totalBooks'));
@@ -255,7 +242,7 @@ class LoanController extends Controller
 
     public function approve(Loan $loan)
     {
-        // Verificar se o usuário tem permissão para aprovar
+        // Verifiy if the user have permission to approve
         if (auth()->user()->role !== 'admin') {
             return back()->with('error', 'Você não tem permissão para confirmar empréstimos.');
         }
@@ -265,13 +252,13 @@ class LoanController extends Controller
         }
 
         DB::transaction(function () use ($loan) {
-            // Atualizar o empréstimo
+            // Updade loan
             $loan->update([
                 'status' => 'active',
-                'loan_date' => now() // Definir a data de empréstimo como agora
+                'loan_date' => now() // Define a date of loan
             ]);
 
-            // Atualizar o estoque dos livros
+            // Update the books stock
             foreach ($loan->items as $item) {
                 $book = $item->book;
                 if ($book->quantity_available <= 0) {

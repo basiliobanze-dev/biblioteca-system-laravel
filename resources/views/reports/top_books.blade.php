@@ -33,6 +33,6 @@
                 @endforelse
             </tbody>
         </table>
-    {{ $books->links() }}
+        {{ $books->links() }}
     </div>
 @endsection

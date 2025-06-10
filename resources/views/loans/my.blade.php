@@ -19,7 +19,7 @@
                 <td>{{ $loan->loan_date->format('d/m/Y H:i') }}</td>
                 <td>{{ $loan->due_date->format('d/m/Y') }}</td>
                 <td>
-                    {{ $loan->return_date ? $loan->return_date->format('d/m/Y H:i') : 'Ainda não devolvido' }}
+                    {{ $loan->return_date ? $loan->return_date->format('d/m/Y H:i') : '————————' }}
                 </td>
                 <td>
                     @if($loan->status === 'active' && now()->gt($loan->due_date))

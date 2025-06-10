@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class IsAdmin
+class IsLibrarian
 {
     /**
      * Handle an incoming request.
@@ -13,14 +13,12 @@ class IsAdmin
      * @param  \Closure  $next
      * @return mixed
      */
-    
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->role === 'admin') {
+        if (auth()->check() && auth()->user()->role === 'librarian') {
             return $next($request);
         }
 
         return redirect('/')->with('error', 'Acesso não autorizado.');
     }
-    
 }

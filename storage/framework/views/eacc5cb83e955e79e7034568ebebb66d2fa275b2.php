@@ -56,5 +56,5 @@
 </footer>
 
 <script>
-  document.getElementById('ano').textContent = new Date().getFullYear();
+    document.getElementById('ano').textContent = new Date().getFullYear();
 </script><?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/partials/footer.blade.php ENDPATH**/ ?>

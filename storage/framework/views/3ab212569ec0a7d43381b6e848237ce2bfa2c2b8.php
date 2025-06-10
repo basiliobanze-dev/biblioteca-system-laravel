@@ -1,12 +1,32 @@
 <?php
     $routeName = \Request::route()->getName();
 
-    if ($routeName === 'home') {
+    if ($routeName === 'admin.dashboard') {
+        $pageTitle = 'Início';
+    } elseif ($routeName === 'reader.dashboard') {
         $pageTitle = 'Início';
     } elseif ($routeName === 'profile.show') {
         $pageTitle = 'Perfil';
     } elseif ($routeName === 'profile.edit') {
         $pageTitle = 'Editar Perfil';
+    } elseif ($routeName === 'loans.index') {
+        $pageTitle = 'Empréstimos & Devoluções';
+    } elseif ($routeName === 'loans.create') {
+        $pageTitle = 'Registrar Empréstimo';
+    } elseif ($routeName === 'loans.track') {
+        $pageTitle = 'Rastrear Empréstimo';
+    } elseif ($routeName === 'loans.request') {
+        $pageTitle = 'Solicitar Empréstimo';
+    } elseif ($routeName === 'loans.my') {
+        $pageTitle = 'Meus Empréstimos';
+    } elseif ($routeName === 'reports.top-books') {
+        $pageTitle = 'Relatório: Livros';
+    } elseif ($routeName === 'reports.top-users') {
+        $pageTitle = 'Relatório: Usuários';
+    } elseif ($routeName === 'audit_logs.index') {
+        $pageTitle = 'Logs de Auditoria';
+    } elseif ($routeName === 'books.user_show') {
+        $pageTitle = 'Detalhes do Livro';
     } else {
         $segments = explode('.', $routeName); // Ex: books.create => ['books', 'create']
         $resource = $segments[0] ?? 'livros';

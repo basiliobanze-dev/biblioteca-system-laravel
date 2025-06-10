@@ -15,7 +15,6 @@
 
         <button type="submit" class="btn btn-primary">Registrar</button>
 
-        <!-- Busca por nome ou email -->
         <div class="mb-3">
             <label for="user_search" class="form-label">Pesquisar Usuário</label>
             <input type="text" id="user_search" name="user_search" class="form-control" placeholder="Pesquisar nome ou email..." list="user_list" autocomplete="off" required>
@@ -27,13 +26,11 @@
             <input type="hidden" name="user_id" id="user_id">
         </div>
 
-        <!-- Campo de pesquisa -->
         <div class="mb-3">
             <label for="book_search" class="form-label">Pesquisar Livro</label>
             <input type="text" id="book_search" class="form-control" placeholder="Pesquisar por título, autor ou ano...">
         </div>
 
-        <!-- Lista de livros com checkboxes -->
         <div id="book_list" class="row">
             @foreach ($books as $book)
                 <div class="col-md-4 mb-3 book-item">
@@ -64,38 +61,37 @@
         </div>
     </form>
 
-    <!-- Script para preencher o user_id automaticamente -->
     <script>
-    document.getElementById('user_search').addEventListener('change', function () {
-        const selectedText = this.value;
-        const datalist = document.getElementById('user_list').options;
+        document.getElementById('user_search').addEventListener('change', function () {
+            const selectedText = this.value;
+            const datalist = document.getElementById('user_list').options;
 
-        for (let i = 0; i < datalist.length; i++) {
-            if (datalist[i].value === selectedText) {
-                document.getElementById('user_id').value = datalist[i].dataset.id;
-                break;
-            }
-        }
-    });
-
-    document.getElementById('book_search').addEventListener('input', function () {
-        const searchTerm = this.value.toLowerCase();
-        const books = document.querySelectorAll('.book-item');
-
-        books.forEach(function (book) {
-            const cardText = book.textContent.toLowerCase();
-            book.style.display = cardText.includes(searchTerm) ? 'block' : 'none';
-        });
-    });
-
-    document.querySelectorAll('.book-checkbox').forEach(function (checkbox) {
-        checkbox.addEventListener('change', function () {
-            const checked = document.querySelectorAll('.book-checkbox:checked');
-            if (checked.length > 3) {
-                alert('Você só pode selecionar até 3 livros.');
-                this.checked = false;
+            for (let i = 0; i < datalist.length; i++) {
+                if (datalist[i].value === selectedText) {
+                    document.getElementById('user_id').value = datalist[i].dataset.id;
+                    break;
+                }
             }
         });
-    });
+
+        document.getElementById('book_search').addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase();
+            const books = document.querySelectorAll('.book-item');
+
+            books.forEach(function (book) {
+                const cardText = book.textContent.toLowerCase();
+                book.style.display = cardText.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('.book-checkbox').forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                const checked = document.querySelectorAll('.book-checkbox:checked');
+                if (checked.length > 3) {
+                    alert('Você só pode selecionar até 3 livros.');
+                    this.checked = false;
+                }
+            });
+        });
     </script>
 @endsection

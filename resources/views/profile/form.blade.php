@@ -9,41 +9,40 @@
                 <img id="preview" src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=ccc&color=555&size=100&rounded=true" alt="Avatar Padrão">
             @endif
         </label>
-        <p class="upload-hint">Clique para alterar</p>
+        <p class="upload-hint">Clique na imagem para alterar</p>
     </div>
 
-<!-- C2 -->
-<div class="form-column">
-    <div class="form-group">
-        <label for="name" class="form-label">Nome</label>
-        <input type="text" name="name" id="name" class="form-input" value="{{ old('name', $user->name) }}" required>
-    </div>
+    <!-- C2 -->
+    <div class="form-column">
+        <div class="form-group">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" name="name" id="name" class="form-input" value="{{ old('name', $user->name) }}" required>
+        </div>
 
-    <div class="form-group">
-        <label for="gender" class="form-label">Gênero</label>
-        <select name="gender" id="gender" class="form-input">
-            <option value="">--</option>
-            <option value="M" {{ old('gender', $user->account->gender ?? '') == 'M' ? 'selected' : '' }}>M</option>
-            <option value="F" {{ old('gender', $user->account->gender ?? '') == 'F' ? 'selected' : '' }}>F</option>
-        </select>
-    </div>
+        <div class="form-group">
+            <label for="gender" class="form-label">Gênero</label>
+            <select name="gender" id="gender" class="form-input">
+                <option value="">--</option>
+                <option value="M" {{ old('gender', $user->account->gender ?? '') == 'M' ? 'selected' : '' }}>M</option>
+                <option value="F" {{ old('gender', $user->account->gender ?? '') == 'F' ? 'selected' : '' }}>F</option>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label for="birth_date" class="form-label">Data de Nascimento</label>
-        <input type="date" name="birth_date" id="birth_date" class="form-input" value="{{ old('birth_date', $user->account->birth_date ?? '') }}">
-    </div>
+        <div class="form-group">
+            <label for="birth_date" class="form-label">Data de Nascimento</label>
+            <input type="date" name="birth_date" id="birth_date" class="form-input" value="{{ old('birth_date', $user->account->birth_date ?? '') }}">
+        </div>
 
-    <div class="form-group">
-        <label for="phone" class="form-label">Telefone</label>
-        <input type="text" name="phone" id="phone" class="form-input" value="{{ old('phone', $user->account->phone ?? '') }}">
-    </div>
+        <div class="form-group">
+            <label for="phone" class="form-label">Telefone</label>
+            <input type="text" name="phone" id="phone" class="form-input" value="{{ old('phone', $user->account->phone ?? '') }}">
+        </div>
 
-    <div class="form-group">
-        <label for="address" class="form-label">Endereço</label>
-        <input type="text" name="address" id="address" class="form-input" value="{{ old('address', $user->account->address ?? '') }}">
+        <div class="form-group">
+            <label for="address" class="form-label">Endereço</label>
+            <input type="text" name="address" id="address" class="form-input" value="{{ old('address', $user->account->address ?? '') }}">
+        </div>
     </div>
-</div>
-
 </section>
 
 <div class="profile-edit-form-actions">

@@ -34,7 +34,7 @@
                 <a href="<?php echo e(route('users.index')); ?>" class="btn-close top-right"><i class="fas fa-times"></i></a>
 
                 <div class="action-buttons bottom-right">
-                    <a href="<?php echo e(route('profile.edit', $user)); ?>" class="btn-edit" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="<?php echo e(route('profile.edit', $user)); ?>" class="btn-edit123" title="Editar" style="color: #A4A4A5; padding: 8px 10px; border-radius: 4px; font-size: 1rem; transition: background-color 0.3s ease;"><i class="fas fa-pencil-alt"></i></a>
                 </div>
             </div>
         </section>

@@ -11,13 +11,11 @@
     </p>
     <p><strong>Multa:</strong> {{ number_format($loan->fine_amount, 2, ',', '.') }} MZN</p>
 
-    <hr>
-    <h4>Livros Emprestados</h4>
+    <h4>Livros:</h4>
     <ul>
         @foreach ($loan->items as $item)
             <li>
-                {{ $item->book->title }} — 
-                <strong>Status:</strong> {{ $item->returned ? 'Devolvido' : '————————' }}
+                {{ $item->book->title }}
             </li>
         @endforeach
     </ul>
