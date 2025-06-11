@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container">
-        <h2>Histórico de Ações de Empréstimo</h2>
+        <div class="audit-log-header">
+            <h2>Histórico de Ações de Empréstimo</h2>
+        </div>
 
         <table class="table table-bordered">
             <thead>

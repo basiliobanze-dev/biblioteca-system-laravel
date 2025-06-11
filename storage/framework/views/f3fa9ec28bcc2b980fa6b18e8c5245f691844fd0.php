@@ -55,7 +55,7 @@
             </div>
 
             <div class="book-actions">
-                <a href="<?php echo e(route('books.index')); ?>" class="btn-close top-right"><i class="fas fa-times"></i></a>
+                <a href="<?php echo e(url()->previous()); ?>" class="btn-close top-right"><i class="fas fa-times"></i></a>
 
                 <!-- <div class="action-buttons bottom-right">
                     <a href="<?php echo e(route('books.edit', $book)); ?>" class="btn-edit" title="Editar"><i class="fas fa-pencil-alt"></i></a>

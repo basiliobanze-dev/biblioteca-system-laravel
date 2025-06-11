@@ -1,75 +1,81 @@
 <?php $__env->startSection('content'); ?>
-    <div class="container">
-        <h2 class="mb-4"><i class="fas fa-book-reader"></i> Solicitar Empréstimo</h2>
-
-        <?php if(session('success')): ?>
-            <div class="alert alert-success"><?php echo e(session('success')); ?></div>
-        <?php endif; ?>
-        <?php if(session('error')): ?>
-            <div class="alert alert-danger"><?php echo e(session('error')); ?></div>
-        <?php endif; ?>
-
-        <form method="POST" action="<?php echo e(route('loans.store')); ?>">
+    <div class="loan-request">
+        <form method="POST" action="<?php echo e(route('loans.store')); ?>" class="loan-request__form">
             <?php echo csrf_field(); ?>
 
-            <div class="mt-4">
-                <button type="submit" class="btn btn-success">
-                    <i class="fas fa-paper-plane"></i> Solicitar Empréstimo
-                </button>
+            <div class="loan-request__header">
+                <h2 class="loan-request__title"><i class="fas fa-paper-plane"></i> Solicitar Empréstimo</h2>
             </div>
 
             <input type="hidden" name="user_id" value="<?php echo e(auth()->id()); ?>">
-            
-            <div class="mb-3">
-                <label for="due_date" class="form-label">Data Prevista da Devolução:</label>
-                <input type="date" name="due_date" class="form-control" required min="<?php echo e(now()->addDay()->format('Y-m-d')); ?>">
+
+            <div class="loan-request__form-group">
+                <label for="due_date" class="loan-request__label">Data Prevista da Devolução:</label>
+                <input type="date" name="due_date" id="due_date" class="loan-request__input" required 
+                    min="<?php echo e(now()->addDay()->format('Y-m-d')); ?>">
             </div>
 
-            <div class="mb-3">
-                <label for="book_search" class="form-label">Pesquisar Livro</label>
-                <input type="text" id="book_search" class="form-control" placeholder="Pesquisar por título, autor ou ano...">
+            <div class="loan-request__form-group">
+                <label for="book_search" class="loan-request__label">Pesquisar Livro</label>
+                <input type="text" id="book_search" class="loan-request__input" placeholder="Pesquisar por título, autor ou ano...">
             </div>
 
-            <div id="book_list" class="row">
-                <?php $__empty_1 = true; $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                    <div class="col-md-4 mb-3 book-item">
-                        <div class="card h-100">
-                            <?php if($book->cover_image): ?>
-                                <img src="<?php echo e(asset('storage/covers/' . $book->cover_image)); ?>" class="card-img-top" alt="Capa do livro" style="height: 200px; object-fit: contain;">
-                            <?php else: ?>
-                                <div class="text-center py-5 bg-light">Sem Capa.</div>
-                            <?php endif; ?>
-                            <div class="card-body">
-                                <div class="form-check">
+            <div class="loan-request__books-container">
+                <div id="book_list" class="loan-request__books-grid">
+                    <?php $__empty_1 = true; $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <div class="loan-request__book-card">
+                            <a href="<?php echo e(route('books.user_show', $book->id)); ?>" class="loan-request__book-card-link">
+                            <div class="loan-request__book-cover-container">
+                                    <?php if($book->cover_image): ?>
+                                        <img src="<?php echo e(asset('storage/covers/' . $book->cover_image)); ?>" 
+                                            alt="Capa do livro <?php echo e($book->title); ?>"
+                                            class="loan-request__book-cover">
+                                    <?php else: ?>
+                                        <div class="loan-request__book-cover-placeholder">
+                                            <i class="fas fa-book"></i>
+                                            <span>Sem Capa</span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </a>        
+                            <div class="loan-request__book-details">
+                                <div class="loan-request__book-selection">
                                     <input type="checkbox" name="book_ids[]" value="<?php echo e($book->id); ?>"
-                                        class="form-check-input book-checkbox" id="book_<?php echo e($book->id); ?>"
+                                        class="loan-request__book-checkbox" id="book_<?php echo e($book->id); ?>"
                                         <?php echo e($book->quantity_available <= 0 ? 'disabled' : ''); ?>>
-                                    <label class="form-check-label" for="book_<?php echo e($book->id); ?>">
-                                        <h5 class="card-title"><?php echo e($book->title); ?></h5>
+                                    <label for="book_<?php echo e($book->id); ?>" class="loan-request__book-title">
+                                        <?php echo e($book->title); ?>
+
                                     </label>
                                 </div>
-                                <p class="card-text">
-                                    <strong>Autor:</strong> <?php echo e($book->author); ?><br>
-                                    <strong>Ano:</strong> <?php echo e($book->year); ?><br>
-                                    <strong>Disponíveis:</strong> <?php echo e($book->quantity_available); ?>
+                                <div class="loan-request__book-info">
+                                    <p class="loan-request__book-meta"><strong>Autor:</strong> <?php echo e($book->author); ?></p>
+                                    <p class="loan-request__book-meta"><strong>Ano:</strong> <?php echo e($book->year); ?></p>
+                                    <p class="loan-request__book-availability <?php echo e($book->quantity_available <= 0 ? 'loan-request__book-availability--unavailable' : 'loan-request__book-availability--available'); ?>">
+                                        <strong>Disponíveis:</strong> <?php echo e($book->quantity_available); ?>
 
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                    <p class="text-muted">Nenhum livro disponível.</p>
-                <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                        <p class="loan-request__no-books">Nenhum livro disponível.</p>
+                    <?php endif; ?>
+                </div>
             </div>
 
-            
+            <div class="loan-request__submit">
+                <button type="submit" class="loan-request__submit-button">
+                    <i class="fas fa-paper-plane"></i> Solicitar Empréstimo
+                </button>
+            </div>
         </form>
     </div>
 
     <script>
         document.getElementById('book_search').addEventListener('input', function () {
             const searchTerm = this.value.toLowerCase();
-            const books = document.querySelectorAll('.book-item');
+            const books = document.querySelectorAll('.loan-request__book-card');
 
             books.forEach(function (book) {
                 const cardText = book.textContent.toLowerCase();
@@ -77,9 +83,9 @@
             });
         });
 
-        document.querySelectorAll('.book-checkbox').forEach(function (checkbox) {
+        document.querySelectorAll('.loan-request__book-checkbox').forEach(function (checkbox) {
             checkbox.addEventListener('change', function () {
-                const checked = document.querySelectorAll('.book-checkbox:checked');
+                const checked = document.querySelectorAll('.loan-request__book-checkbox:checked');
                 if (checked.length > 3) {
                     alert('Você só pode selecionar até 3 livros.');
                     this.checked = false;

@@ -8,7 +8,10 @@
         </div>
 
         <?php if(session('success')): ?>
-            <div class="alert alert-success"><?php echo e(session('success')); ?></div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
+                <?php echo e(session('success')); ?>
+
+            </div>
         <?php endif; ?>
 
         <div class="dashboard-grid">
@@ -21,7 +24,7 @@
                     <h3>Meus Empréstimos</h3>
                     <div class="book-counter">
                         <span class="counter-number"><?php echo e($activeLoansCount ?? '0'); ?></span>
-                        <span class="counter-label">emprestados</span>
+                        <span class="counter-label">Livros Comigo</span>
                     </div>
                     <a href="<?php echo e(route('loans.my')); ?>" class="card-button">
                         <i class="fas fa-chevron-right"></i> Ver todos

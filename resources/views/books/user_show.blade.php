@@ -57,7 +57,7 @@
             </div>
 
             <div class="book-actions">
-                <a href="{{ route('books.index') }}" class="btn-close top-right"><i class="fas fa-times"></i></a>
+                <a href="{{ url()->previous() }}" class="btn-close top-right"><i class="fas fa-times"></i></a>
 
                 <!-- <div class="action-buttons bottom-right">
                     <a href="{{ route('books.edit', $book) }}" class="btn-edit" title="Editar"><i class="fas fa-pencil-alt"></i></a>

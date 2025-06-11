@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="top-header">
             <h2>Livros Mais Emprestados</h2>
-            <a href="{{ route('reports.top-books.pdf') }}" class="btn btn-sm btn-outline-primary">
+            <a href="{{ route('reports.top-books.pdf') }}">
                 📄 Exportar PDF
             </a>
         </div>

@@ -1,8 +1,9 @@
 <?php $__env->startSection('content'); ?>
     <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <div class="top-header">
             <h2>Usuários com Mais Empréstimos</h2>
-            <a href="<?php echo e(route('reports.top-users.pdf')); ?>" class="btn btn-sm btn-outline-primary">
+            <a href="<?php echo e(route('reports.top-users.pdf')); ?>">
                 📄 Exportar PDF
             </a>
         </div>

@@ -4,18 +4,20 @@
     <?php endif; ?>
 
     <div class="d-flex justify-content-between mb-3">
-        <a href="<?php echo e(route('loans.create')); ?>" class="btn btn-primary">Registrar Empréstimo</a>
-
+        
+        <a href="<?php echo e(route('loans.create')); ?>" class="loan-custom-btn loan-custom-btn--primary">
+            <i class="fa fa-file-signature"></i> Registrar Empréstimo
+        </a>
         <form action="<?php echo e(route('loans.track')); ?>" method="GET" class="d-flex">
-            <input type="text" name="protocol" class="form-control me-2" placeholder="Código (ex: EMP-202506071887C8)" required>
-            <button type="submit" class="btn btn-secondary">Rastrear</button>
+            <input type="text" name="protocol" class="loan-custom-input" placeholder="Código (ex: EMP-202506071887C8)" required style="width: 281px;">
+            <button type="submit" class="loan-custom-btn loan-custom-btn--secondary">Rastrear</button>
         </form>
     </div>
 
     <form id="search-form" class="d-flex gap-2 mb-3">
-        <input type="text" name="user" placeholder="Buscar por usuário..." class="form-control" value="">
-        <input type="text" name="book" placeholder="Buscar por livro..." class="form-control" value="">
-        <select name="status" class="form-select">
+        <input type="text" name="user" placeholder="Buscar por usuário..." class="loan-custom-input" value="">
+        <input type="text" name="book" placeholder="Buscar por livro..." class="loan-custom-input" value="">
+        <select name="status" class="loan-custom-select">
             <option value="">Todos</option>
             <option value="active">Ativos</option>
             <option value="pending">Pendentes</option>
@@ -33,8 +35,8 @@
                 setTimeout(() => {
                     alert.style.transition = 'opacity 0.5s ease';
                     alert.style.opacity = '0';
-                    setTimeout(() => alert.remove(), 500); // remove após o fade
-                }, 3000); // 3 segundos
+                    setTimeout(() => alert.remove(), 500);
+                }, 3000);
             }
         });
     </script>

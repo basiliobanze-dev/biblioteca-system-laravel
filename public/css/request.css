@@ -1,0 +1,232 @@
+.loan-request {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    /* background-color: #F3F4F6; */
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.loan-request__header {
+    margin-bottom: 2rem;
+}
+
+.loan-request__title {
+    color: #1D2A3A;
+    font-size: 1.8rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.loan-request__title i {
+    color: #00BFA6;
+}
+
+/* FORM */
+.loan-request__form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 1px 20px #3a4d5f4d;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.loan-request__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.loan-request__label {
+    font-weight: 500;
+    color: #1D2A3A;
+}
+
+.loan-request__input {
+    padding: 0.8rem;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.loan-request__input:focus {
+    outline: none;
+    border-color: #00BFA6;
+}
+
+/* SCROLL CONTAINER BOOKS */
+.loan-request__books-container {
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #F9F9F9;
+}
+
+/* BOOKS GRID */
+.loan-request__books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 0.5rem;
+}
+
+.loan-request__book-card {
+    width: 240px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: white;
+}
+
+.loan-request__book-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* COVER BOOK CONTAINER */
+.loan-request__book-cover-container {
+    height: 390px;
+    width: 100%;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+/* COVER BOOK STYLE */
+.loan-request__book-cover {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.loan-request__book-card:hover .loan-request__book-cover {
+    transform: scale(1.05);
+}
+
+.loan-request__book-cover-placeholder {
+    text-align: center;
+    color: #666666;
+    padding: 1rem;
+}
+
+.loan-request__book-cover-placeholder i {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1D2A3A;
+}
+
+/* BOOK DETAIL */
+.loan-request__book-details {
+    padding: 1.2rem;
+}
+
+.loan-request__book-selection {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.loan-request__book-checkbox {
+    margin-top: 0.3rem;
+    accent-color: #00BFA6;
+    min-width: 18px;
+    min-height: 18px;
+}
+
+.loan-request__book-title {
+    font-size: 1.1rem;
+    color: #1D2A3A;
+    line-height: 1.3;
+    font-weight: 500;
+    margin: 0;
+    cursor: pointer;
+}
+
+.loan-request__book-info {
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+.loan-request__book-meta {
+    margin: 0.4rem 0;
+}
+
+.loan-request__book-availability--available {
+    color: #2e7d32;
+}
+
+.loan-request__book-availability--unavailable {
+    color: #c62828;
+}
+
+.loan-request__no-books {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #666666;
+    padding: 2rem;
+}
+
+/* SEND BUTTON */
+.loan-request__submit {
+    margin-top: 0.5rem;
+    text-align: right;
+}
+
+.loan-request__submit-button {
+    background-color: #00BFA6;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.loan-request__submit-button:hover {
+    background-color: #008c7a;
+}
+
+.loan-request__submit-button i {
+    font-size: 1rem;
+}
+
+/* SCROLL BAR */
+.loan-request__books-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.loan-request__books-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.loan-request__books-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.loan-request__books-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

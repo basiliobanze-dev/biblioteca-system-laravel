@@ -28,22 +28,24 @@
                 <td>{{ ucfirst($loan->status_label) }}</td>
                 <td>{{ number_format($loan->calculated_fine ?? 0, 2, ',', '.') }}</td>
                 <td>
-                    @if($loan->status === 'active')
-                        <form action="{{ route('loans.return.process', $loan) }}" method="POST" style="display:inline;">
-                            @csrf
-                            <input type="hidden" name="return_date" value="{{ now()->format('Y-m-d H:i:s') }}">
-                            <button type="submit" class="btn btn-sm btn-warning">Registrar Devolução</button>
-                        </form>
-                    @elseif($loan->status === 'pending' && auth()->user()->role === 'admin')
-                        <form action="{{ route('loans.approve', $loan) }}" method="POST" style="display:inline;">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-success">Confirmar Empréstimo</button>
-                        </form>
-                    @elseif($loan->status === 'expired')
-                        <span class="text-muted">Solicitação Expirada</span>
-                    @else
-                        <span class="text-muted">{{ ucfirst($loan->status_label) }}</span>
-                    @endif
+                    <div class="loan-action-btn-container">
+                        @if($loan->status === 'active')
+                            <form action="{{ route('loans.return.process', $loan) }}" method="POST" style="display:inline;">
+                                @csrf
+                                <input type="hidden" name="return_date" value="{{ now()->format('Y-m-d H:i:s') }}">
+                                <button type="submit" class="loan-action-btn loan-action-btn--return">Registrar Devolução</button>
+                            </form>
+                        @elseif($loan->status === 'pending' && auth()->user()->role === 'admin')
+                            <form action="{{ route('loans.approve', $loan) }}" method="POST" style="display:inline;">
+                                @csrf
+                                <button type="submit" class="loan-action-btn loan-action-btn--approve">Confirmar Empréstimo</button>
+                            </form>
+                        @elseif($loan->status === 'expired')
+                            <span class="text-muted">Solicitação Expirada</span>
+                        @else
+                            <span class="text-muted">{{ ucfirst($loan->status_label) }}</span>
+                        @endif
+                    </div>
                 </td>
             </tr>
         @empty

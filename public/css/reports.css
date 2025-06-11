@@ -1,0 +1,32 @@
+
+.top-header,
+.audit-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
+.top-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #1D2A3A;
+}
+
+.top-header a {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    color: #1D2A3A;
+    border: 1px solid #1D2A3A;
+    background-color: transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.top-header a:hover {
+    background-color: #1D2A3A;
+    color: white;
+}
+    

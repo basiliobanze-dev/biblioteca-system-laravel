@@ -13,6 +13,10 @@
         <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
         <link rel="stylesheet" href="{{ asset('css/dashboard-admin.css') }}">
         <link rel="stylesheet" href="{{ asset('css/dashboard-reader.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/request.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/loans.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/loans-create.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/reports.css') }}">
     </head>
 
     <body>
