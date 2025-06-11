@@ -8,14 +8,29 @@
         <div>
             <ul class="list-unstyled">
                 <li><a href="<?php echo e(route('dashboard')); ?>" class="nav-link"><i class="fa-solid fa-house"></i> Início</a></li>
-                <li><a href="<?php echo e(route('books.index')); ?>" class="nav-link"><i class="fa-solid fa-book"></i> Gerenciar Livros</a></li>
-                <li><a href="<?php echo e(route('users.index')); ?>" class="nav-link"><i class="fa-solid fa-users"></i> Gerenciar Usuários</a></li>
-                <li><a href="<?php echo e(route('loans.index')); ?>" class="nav-link"><i class="fas fa-exchange-alt"></i> Empréstimos & Devoluções</a></li>
-                <li><a href="<?php echo e(route('reports.top-books')); ?>" class="nav-link"><i class="fas fa-chart-pie"></i> Relatório: Livros</a></li>
-                <li><a href="<?php echo e(route('reports.top-users')); ?>" class="nav-link"><i class="fas fa-chart-pie"></i> Relatório: Usuários</a></li>
-                <li><a href="<?php echo e(route('audit_logs.index')); ?>" class="nav-link"><i class="fa-solid fa-users"></i> Logs de Auditoria</a></li>
-                <li><a href="<?php echo e(route('loans.my')); ?>" class="nav-link"><i class="fas fa-bookmark"></i> Meus Empréstimos</a></li>
-                <li><a href="<?php echo e(route('loans.request')); ?>" class="nav-link"><i class="fas fa-book-open"></i></i> Catálogo</a></li>
+                
+                <?php if(in_array(auth()->user()->role, ['admin', 'librarian'])): ?>
+                    <li><a href="<?php echo e(route('books.index')); ?>" class="nav-link"><i class="fa-solid fa-book"></i> Gerenciar Livros</a></li>
+                <?php endif; ?>
+                
+                <?php if(auth()->user()->role === 'admin'): ?>
+                    <li><a href="<?php echo e(route('users.index')); ?>" class="nav-link"><i class="fa-solid fa-users"></i> Gerenciar Usuários</a></li>
+                <?php endif; ?>
+                
+                <?php if(in_array(auth()->user()->role, ['admin', 'librarian'])): ?>
+                    <li><a href="<?php echo e(route('loans.index')); ?>" class="nav-link"><i class="fas fa-exchange-alt"></i> Empréstimos & Devoluções</a></li>
+                    <li><a href="<?php echo e(route('reports.top-books')); ?>" class="nav-link"><i class="fas fa-chart-pie"></i> Relatório: Livros</a></li>
+                    <li><a href="<?php echo e(route('reports.top-users')); ?>" class="nav-link"><i class="fas fa-chart-pie"></i> Relatório: Usuários</a></li>
+                <?php endif; ?>
+                
+                <?php if(auth()->user()->role === 'admin'): ?>
+                    <li><a href="<?php echo e(route('audit_logs.index')); ?>" class="nav-link"><i class="fa-solid fa-users"></i> Logs de Auditoria</a></li>
+                <?php endif; ?>
+
+                <?php if(in_array(auth()->user()->role, ['admin', 'reader'])): ?>
+                    <li><a href="<?php echo e(route('loans.my')); ?>" class="nav-link"><i class="fas fa-bookmark"></i> Meus Empréstimos</a></li>
+                    <li><a href="<?php echo e(route('loans.request')); ?>" class="nav-link"><i class="fas fa-book-open"></i> Buscar Livros</a></li>
+                <?php endif; ?>
             </ul>
         </div>
 

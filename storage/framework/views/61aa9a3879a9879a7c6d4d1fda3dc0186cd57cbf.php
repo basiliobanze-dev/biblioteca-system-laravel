@@ -16,9 +16,11 @@
                     <a href="<?php echo e(route('books.index')); ?>" class="admin-link">
                         <i class="fas fa-book"></i> Gerenciar Livros
                     </a>
-                    <a href="<?php echo e(route('users.index')); ?>" class="admin-link">
-                        <i class="fas fa-users"></i> Gerenciar Usuários
-                    </a>
+                    <?php if(auth()->user()->role === 'admin'): ?>
+                        <a href="<?php echo e(route('users.index')); ?>" class="admin-link">
+                            <i class="fas fa-users"></i> Gerenciar Usuários
+                        </a>
+                    <?php endif; ?>
                     <a href="<?php echo e(route('loans.index')); ?>" class="admin-link">
                         <i class="fas fa-exchange-alt"></i> Empréstimos & Devoluções
                     </a>
@@ -34,9 +36,11 @@
                     <a href="<?php echo e(route('reports.top-users')); ?>" class="admin-link">
                         <i class="fas fa-chart-bar"></i></i> Relatório: Usuários
                     </a>
-                    <a href="<?php echo e(route('audit_logs.index')); ?>" class="admin-link">
-                        <i class="fas fa-clipboard-list"></i> Logs de Auditoria
-                    </a>
+                    <?php if(auth()->user()->role === 'admin'): ?>
+                        <a href="<?php echo e(route('audit_logs.index')); ?>" class="admin-link">
+                            <i class="fas fa-clipboard-list"></i> Logs de Auditoria
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

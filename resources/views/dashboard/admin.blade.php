@@ -18,9 +18,11 @@
                     <a href="{{ route('books.index') }}" class="admin-link">
                         <i class="fas fa-book"></i> Gerenciar Livros
                     </a>
-                    <a href="{{ route('users.index') }}" class="admin-link">
-                        <i class="fas fa-users"></i> Gerenciar Usuários
-                    </a>
+                    @if(auth()->user()->role === 'admin')
+                        <a href="{{ route('users.index') }}" class="admin-link">
+                            <i class="fas fa-users"></i> Gerenciar Usuários
+                        </a>
+                    @endif
                     <a href="{{ route('loans.index') }}" class="admin-link">
                         <i class="fas fa-exchange-alt"></i> Empréstimos & Devoluções
                     </a>
@@ -36,9 +38,11 @@
                     <a href="{{ route('reports.top-users') }}" class="admin-link">
                         <i class="fas fa-chart-bar"></i></i> Relatório: Usuários
                     </a>
-                    <a href="{{ route('audit_logs.index') }}" class="admin-link">
-                        <i class="fas fa-clipboard-list"></i> Logs de Auditoria
-                    </a>
+                    @if(auth()->user()->role === 'admin')
+                        <a href="{{ route('audit_logs.index') }}" class="admin-link">
+                            <i class="fas fa-clipboard-list"></i> Logs de Auditoria
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>

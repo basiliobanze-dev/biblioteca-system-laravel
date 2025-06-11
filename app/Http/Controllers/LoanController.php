@@ -243,7 +243,7 @@ class LoanController extends Controller
     public function approve(Loan $loan)
     {
         // Verifiy if the user have permission to approve
-        if (auth()->user()->role !== 'admin') {
+        if (!in_array(auth()->user()->role, ['admin', 'librarian'])) {
             return back()->with('error', 'Você não tem permissão para confirmar empréstimos.');
         }
 

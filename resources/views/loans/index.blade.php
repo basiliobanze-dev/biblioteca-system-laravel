@@ -2,7 +2,9 @@
 
 @section('content')
     @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
+            {{ session('success') }}
+        </div>
     @endif
 
     <div class="d-flex justify-content-between mb-3">

@@ -35,7 +35,7 @@
                                 <input type="hidden" name="return_date" value="{{ now()->format('Y-m-d H:i:s') }}">
                                 <button type="submit" class="loan-action-btn loan-action-btn--return">Registrar Devolução</button>
                             </form>
-                        @elseif($loan->status === 'pending' && auth()->user()->role === 'admin')
+                        @elseif($loan->status === 'pending' && in_array(auth()->user()->role, ['admin', 'librarian']))
                             <form action="{{ route('loans.approve', $loan) }}" method="POST" style="display:inline;">
                                 @csrf
                                 <button type="submit" class="loan-action-btn loan-action-btn--approve">Confirmar Empréstimo</button>

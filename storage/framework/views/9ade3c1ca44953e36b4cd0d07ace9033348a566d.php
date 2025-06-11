@@ -36,7 +36,7 @@
                                 <input type="hidden" name="return_date" value="<?php echo e(now()->format('Y-m-d H:i:s')); ?>">
                                 <button type="submit" class="loan-action-btn loan-action-btn--return">Registrar Devolução</button>
                             </form>
-                        <?php elseif($loan->status === 'pending' && auth()->user()->role === 'admin'): ?>
+                        <?php elseif($loan->status === 'pending' && in_array(auth()->user()->role, ['admin', 'librarian'])): ?>
                             <form action="<?php echo e(route('loans.approve', $loan)); ?>" method="POST" style="display:inline;">
                                 <?php echo csrf_field(); ?>
                                 <button type="submit" class="loan-action-btn loan-action-btn--approve">Confirmar Empréstimo</button>
