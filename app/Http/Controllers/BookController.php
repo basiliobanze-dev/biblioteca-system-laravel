@@ -122,23 +122,6 @@ class BookController extends Controller
         return redirect()->route('books.index')->with('success', 'Livro excluído com sucesso!');
     }
 
-    public function catalog(Request $request)
-    {
-        if ($request->ajax()) {
-            $books = Book::where('quantity_available', '>', 0)
-                ->where(function ($q) use ($request) {
-                    $q->where('title', 'like', '%' . $request->search . '%')
-                    ->orWhere('author', 'like', '%' . $request->search . '%');
-                })
-                ->get();
-
-            return view('books.partials._table', compact('books'))->render();
-        }
-
-        $books = Book::where('quantity_available', '>', 0)->paginate(10);
-        return view('books.catalog', compact('books'));
-    }
-
     
     // public function search(Request $request)
     // {

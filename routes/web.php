@@ -34,13 +34,6 @@ Route::middleware(['auth', 'isAdminOrLibrarian'])->get('/admin/dashboard', funct
 })->name('admin.dashboard');
 
 // READER DASHBOARD
-// Route::middleware(['auth', 'isReader'])->get('/reader/dashboard', function () {
-//     return view('dashboard.reader');
-// })->name('reader.dashboard');
-
-// Route::middleware(['auth', 'isReader'])->get('/reader/dashboard', [LoanController::class, 'readerDashboard'])
-//     ->name('reader.dashboard');
-
 Route::middleware(['auth', 'isReader'])->get('/reader/dashboard', 'LoanController@readerDashboard')
     ->name('reader.dashboard');
 
@@ -69,6 +62,13 @@ Route::middleware(['auth', 'isAdminOrLibrarian'])->group(function () {
     Route::get('reports/top-users/pdf', 'ReportController@topUsersPdf')->name('reports.top-users.pdf');
 });
 
+// ADMIN AND READERS ROUTES
+Route::middleware(['auth', 'isReaderOrAdmin'])->group(function () {
+    Route::get('my-loans', 'LoanController@myLoans')->name('loans.my');
+    Route::get('book-detail/{book}', 'BookController@userShow')->name('books.user_show');
+    Route::get('/loans/request', 'LoanController@requestForm')->name('loans.request');
+});
+
 // ADMIN ROUTES
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('users', 'UserController');
@@ -76,9 +76,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 });
 
 // READERS ROUTES
-Route::middleware(['auth', 'isReader'])->group(function () {
-    Route::get('my-loans', 'LoanController@myLoans')->name('loans.my');
-    Route::get('catalog', 'BookController@catalog')->name('books.catalog');
-    Route::get('book-detail/{book}', 'BookController@userShow')->name('books.user_show');
-    Route::get('/loans/request', 'LoanController@requestForm')->name('loans.request');
-});
+// Route::middleware(['auth', 'isReader'])->group(function () {
+//     Route::get('my-loans', 'LoanController@myLoans')->name('loans.my');
+//     Route::get('book-detail/{book}', 'BookController@userShow')->name('books.user_show');
+//     // Route::get('/loans/request', 'LoanController@requestForm')->name('loans.request');
+// });

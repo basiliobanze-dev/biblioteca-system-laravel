@@ -25,7 +25,7 @@
                     <?php $__empty_1 = true; $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <div class="loan-request__book-card">
                             <a href="<?php echo e(route('books.user_show', $book->id)); ?>" class="loan-request__book-card-link">
-                            <div class="loan-request__book-cover-container">
+                                <div class="loan-request__book-cover-container">
                                     <?php if($book->cover_image): ?>
                                         <img src="<?php echo e(asset('storage/covers/' . $book->cover_image)); ?>" 
                                             alt="Capa do livro <?php echo e($book->title); ?>"

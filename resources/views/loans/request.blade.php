@@ -27,7 +27,7 @@
                     @forelse ($books as $book)
                         <div class="loan-request__book-card">
                             <a href="{{ route('books.user_show', $book->id) }}" class="loan-request__book-card-link">
-                            <div class="loan-request__book-cover-container">
+                                <div class="loan-request__book-cover-container">
                                     @if($book->cover_image)
                                         <img src="{{ asset('storage/covers/' . $book->cover_image) }}" 
                                             alt="Capa do livro {{ $book->title }}"
