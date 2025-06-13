@@ -409,3 +409,10 @@ button.search-button,
 .book-actions .btn-remove:hover {
     background-color: #009C8B;
 }
+
+.modal-content {
+    background-color: transparent !important; /* Remove a cor de fundo */
+    color: inherit !important;                /* Herda a cor do texto do pai */
+    box-shadow: none !important;              /* Remove sombras (opcional) */
+    border: none !important;                  /* Remove bordas (opcional) */
+}

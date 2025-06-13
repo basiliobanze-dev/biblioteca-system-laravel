@@ -24,7 +24,7 @@
                 <div id="book_list" class="loan-request__books-grid">
                     <?php $__empty_1 = true; $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <div class="loan-request__book-card">
-                            <a href="<?php echo e(route('books.user_show', $book->id)); ?>" class="loan-request__book-card-link">
+                            <a href="#" class="loan-request__book-card-link" data-bs-toggle="modal" data-bs-target="#bookDetailsModal<?php echo e($book->id); ?>">
                                 <div class="loan-request__book-cover-container">
                                     <?php if($book->cover_image): ?>
                                         <img src="<?php echo e(asset('storage/covers/' . $book->cover_image)); ?>" 
@@ -58,6 +58,9 @@
                                 </div>
                             </div>
                         </div>
+
+                        <?php echo $__env->make('books.show_modal', ['book' => $book], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                        
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <p class="loan-request__no-books">Nenhum livro disponível.</p>
                     <?php endif; ?>

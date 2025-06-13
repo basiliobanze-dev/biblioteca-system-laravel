@@ -49,7 +49,12 @@
                         <!-- <td><?php echo e($book->isbn); ?></td> -->
                         <td><?php echo e($book->status); ?></td>
                         <td>
-                            <a href="<?php echo e(route('books.show', $book)); ?>" class="btn btn-sm btn-view"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn btn-sm btn-view" data-bs-toggle="modal" data-bs-target="#bookDetailsModal<?php echo e($book->id); ?>">
+                                <i class="fas fa-eye"></i>
+                            </a>
+
+                            <?php echo $__env->make('books.show_modal', ['book' => $book], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                            
                             <!-- <a href="<?php echo e(route('books.edit', $book)); ?>" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>
                             <form action="<?php echo e(route('books.destroy', $book)); ?>" method="POST" style="display:inline;">
                                 <?php echo csrf_field(); ?>

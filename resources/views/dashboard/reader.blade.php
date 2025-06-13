@@ -57,9 +57,15 @@
                     <div class="book-recommendation">
                         <div class="book-cover-dashboard cover">
                             @if(isset($recommendedBook->cover_image))
-                                <img src="{{ asset('storage/covers/' . $recommendedBook->cover_image) }}" alt="{{ $recommendedBook->title }}" class="img-fluid" style="max-height: 120px;">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#bookDetailsModal{{ $recommendedBook->id }}">
+                                    <img src="{{ asset('storage/covers/' . $recommendedBook->cover_image) }}" 
+                                        alt="{{ $recommendedBook->title }}" 
+                                        class="img-fluid" style="max-height: 120px;">
+                                </a>
                             @else
-                                <i class="fas fa-book"></i>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#bookDetailsModal{{ $recommendedBook->id }}">
+                                    <i class="fas fa-book"></i>
+                                </a>
                             @endif
                         </div>
 
@@ -68,11 +74,17 @@
                             <p class="book-author">{{ $recommendedBook->author ?? 'Author' }}</p>
                         </div>
                     </div>
-                    <a href="{{ route('books.user_show', $recommendedBook->id ?? 0) }}" class="card-button">
-                        <i class="fas fa-chevron-right"></i> Ver detalhes
-                    </a>
+                    <div class="d-flex justify-content-between mt-2">
+                        <a href="#" class="card-button" data-bs-toggle="modal" data-bs-target="#bookDetailsModal{{ $recommendedBook->id }}">
+                            <i class="fas fa-chevron-right"></i> Ver detalhes
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            @if(isset($recommendedBook))
+                @include('books.show_modal', ['book' => $recommendedBook])
+            @endif
 
             <div class="dashboard-card news-card">
                 <div class="news-header">

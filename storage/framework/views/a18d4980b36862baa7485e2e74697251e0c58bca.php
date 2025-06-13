@@ -56,9 +56,15 @@
                     <div class="book-recommendation">
                         <div class="book-cover-dashboard cover">
                             <?php if(isset($recommendedBook->cover_image)): ?>
-                                <img src="<?php echo e(asset('storage/covers/' . $recommendedBook->cover_image)); ?>" alt="<?php echo e($recommendedBook->title); ?>" class="img-fluid" style="max-height: 120px;">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#bookDetailsModal<?php echo e($recommendedBook->id); ?>">
+                                    <img src="<?php echo e(asset('storage/covers/' . $recommendedBook->cover_image)); ?>" 
+                                        alt="<?php echo e($recommendedBook->title); ?>" 
+                                        class="img-fluid" style="max-height: 120px;">
+                                </a>
                             <?php else: ?>
-                                <i class="fas fa-book"></i>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#bookDetailsModal<?php echo e($recommendedBook->id); ?>">
+                                    <i class="fas fa-book"></i>
+                                </a>
                             <?php endif; ?>
                         </div>
 
@@ -67,11 +73,17 @@
                             <p class="book-author"><?php echo e($recommendedBook->author ?? 'Author'); ?></p>
                         </div>
                     </div>
-                    <a href="<?php echo e(route('books.user_show', $recommendedBook->id ?? 0)); ?>" class="card-button">
-                        <i class="fas fa-chevron-right"></i> Ver detalhes
-                    </a>
+                    <div class="d-flex justify-content-between mt-2">
+                        <a href="#" class="card-button" data-bs-toggle="modal" data-bs-target="#bookDetailsModal<?php echo e($recommendedBook->id); ?>">
+                            <i class="fas fa-chevron-right"></i> Ver detalhes
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            <?php if(isset($recommendedBook)): ?>
+                <?php echo $__env->make('books.show_modal', ['book' => $recommendedBook], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php endif; ?>
 
             <div class="dashboard-card news-card">
                 <div class="news-header">

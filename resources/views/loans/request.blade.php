@@ -26,7 +26,7 @@
                 <div id="book_list" class="loan-request__books-grid">
                     @forelse ($books as $book)
                         <div class="loan-request__book-card">
-                            <a href="{{ route('books.user_show', $book->id) }}" class="loan-request__book-card-link">
+                            <a href="#" class="loan-request__book-card-link" data-bs-toggle="modal" data-bs-target="#bookDetailsModal{{ $book->id }}">
                                 <div class="loan-request__book-cover-container">
                                     @if($book->cover_image)
                                         <img src="{{ asset('storage/covers/' . $book->cover_image) }}" 
@@ -58,6 +58,9 @@
                                 </div>
                             </div>
                         </div>
+
+                        @include('books.show_modal', ['book' => $book])
+                        
                     @empty
                         <p class="loan-request__no-books">Nenhum livro disponível.</p>
                     @endforelse

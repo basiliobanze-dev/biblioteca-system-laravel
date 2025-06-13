@@ -65,7 +65,6 @@ Route::middleware(['auth', 'isAdminOrLibrarian'])->group(function () {
 // ADMIN AND READERS ROUTES
 Route::middleware(['auth', 'isReaderOrAdmin'])->group(function () {
     Route::get('my-loans', 'LoanController@myLoans')->name('loans.my');
-    Route::get('book-detail/{book}', 'BookController@userShow')->name('books.user_show');
     Route::get('/loans/request', 'LoanController@requestForm')->name('loans.request');
 });
 
@@ -78,6 +77,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 // READERS ROUTES
 // Route::middleware(['auth', 'isReader'])->group(function () {
 //     Route::get('my-loans', 'LoanController@myLoans')->name('loans.my');
-//     Route::get('book-detail/{book}', 'BookController@userShow')->name('books.user_show');
 //     // Route::get('/loans/request', 'LoanController@requestForm')->name('loans.request');
 // });

@@ -50,7 +50,12 @@
                         <!-- <td>{{ $book->isbn }}</td> -->
                         <td>{{ $book->status }}</td>
                         <td>
-                            <a href="{{ route('books.show', $book) }}" class="btn btn-sm btn-view"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn btn-sm btn-view" data-bs-toggle="modal" data-bs-target="#bookDetailsModal{{ $book->id }}">
+                                <i class="fas fa-eye"></i>
+                            </a>
+
+                            @include('books.show_modal', ['book' => $book])
+                            
                             <!-- <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>
                             <form action="{{ route('books.destroy', $book) }}" method="POST" style="display:inline;">
                                 @csrf

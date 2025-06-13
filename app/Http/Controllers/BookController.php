@@ -66,11 +66,6 @@ class BookController extends Controller
     {
         return view('books.show', compact('book'));
     }
-
-    public function userShow(Book $book)
-    {
-        return view('books.user_show', compact('book'));
-    }
     
     public function edit(Book $book)
     {

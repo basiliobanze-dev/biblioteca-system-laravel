@@ -25,8 +25,6 @@
         $pageTitle = 'Relatório: Usuários';
     } elseif ($routeName === 'audit_logs.index') {
         $pageTitle = 'Logs de Auditoria';
-    } elseif ($routeName === 'books.user_show') {
-        $pageTitle = 'Detalhes do Livro';
     } else {
         $segments = explode('.', $routeName); // Ex: books.create => ['books', 'create']
         $resource = $segments[0] ?? 'livros';
