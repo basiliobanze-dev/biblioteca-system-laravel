@@ -7,6 +7,10 @@
                 <h2 class="loan-request__title"><i class="fas fa-paper-plane"></i> Solicitar Empréstimo</h2>
             </div>
 
+            <?php if(session('error')): ?>
+                <div class="alert alert-danger"><?php echo e(session('error')); ?></div>
+            <?php endif; ?>
+
             <input type="hidden" name="user_id" value="<?php echo e(auth()->id()); ?>">
 
             <div class="loan-request__form-group">
@@ -96,5 +100,6 @@
             });
         });
     </script>
+    
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\PROJECTS\LARAVEL\biblioteca-system-laravel\resources\views/loans/request.blade.php ENDPATH**/ ?>

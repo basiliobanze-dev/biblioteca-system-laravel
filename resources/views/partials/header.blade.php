@@ -62,7 +62,7 @@
         </h4>
 
         @auth
-            <a href="{{ route('profile.show') }}" class="d-flex align-items-center gap-2 text-decoration-none" style="position: absolute; right: 15px;">
+            <a href="#" class="d-flex align-items-center gap-2 text-decoration-none" style="position: absolute; right: 15px;" data-bs-toggle="modal" data-bs-target="#profileModal">
                 <span class="fw-semibold text-dark">
                     {{ Auth::user()->name }}
                 </span>
@@ -74,6 +74,8 @@
                     <i class="fa-solid fa-user-circle fa-2x" style="color: #1d2a3a;"></i>
                 @endif
             </a>
+
+            @include('profile.show_modal', ['user' => Auth::user()])
         @endauth
 
     </div>

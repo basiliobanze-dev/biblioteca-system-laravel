@@ -45,13 +45,11 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role_label }}</td>
                         <td>
-                            <a href="{{ route('users.show', $user) }}" class="btn btn-sm btn-view"><i class="fas fa-eye"></i></a>
-                            <!-- <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-edit"><i class="fas fa-pencil-alt"></i></a>
-                            <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-remove" onclick="return confirm('Tem certeza?')"><i class="fas fa-trash-alt"></i></button>
-                            </form> -->
+                            <a href="#" class="btn btn-sm btn-view" data-bs-toggle="modal" data-bs-target="#userDetailsModal{{ $user->id }}">
+                                <i class="fas fa-eye"></i>
+                            </a>
+
+                            @include('users.show_modal', ['user' => $user])
                         </td>
                     </tr>
                 @endforeach

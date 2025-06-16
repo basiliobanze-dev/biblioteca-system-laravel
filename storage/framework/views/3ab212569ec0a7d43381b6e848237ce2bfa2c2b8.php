@@ -62,7 +62,7 @@
         </h4>
 
         <?php if(auth()->guard()->check()): ?>
-            <a href="<?php echo e(route('profile.show')); ?>" class="d-flex align-items-center gap-2 text-decoration-none" style="position: absolute; right: 15px;">
+            <a href="#" class="d-flex align-items-center gap-2 text-decoration-none" style="position: absolute; right: 15px;" data-bs-toggle="modal" data-bs-target="#profileModal">
                 <span class="fw-semibold text-dark">
                     <?php echo e(Auth::user()->name); ?>
 
@@ -75,6 +75,8 @@
                     <i class="fa-solid fa-user-circle fa-2x" style="color: #1d2a3a;"></i>
                 <?php endif; ?>
             </a>
+
+            <?php echo $__env->make('profile.show_modal', ['user' => Auth::user()], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <?php endif; ?>
 
     </div>

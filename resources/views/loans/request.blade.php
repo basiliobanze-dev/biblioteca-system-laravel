@@ -9,6 +9,10 @@
                 <h2 class="loan-request__title"><i class="fas fa-paper-plane"></i> Solicitar Empréstimo</h2>
             </div>
 
+            @if(session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
+
             <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
             <div class="loan-request__form-group">
@@ -96,4 +100,5 @@
             });
         });
     </script>
+    
 @endsection
