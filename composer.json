@@ -25,14 +25,7 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true,
-        "platform": {
-            "php": "7.4.11",
-            "ext-pdo": "*",
-            "ext-mbstring": "*",
-            "ext-zip": "*",
-            "ext-gd": "*"
-        }
+        "sort-packages": true
     },
     "extra": {
         "laravel": {
