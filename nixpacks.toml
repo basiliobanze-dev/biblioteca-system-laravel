@@ -1,2 +1,3 @@
 [phases.setup]
+nixOverlayFile = "nix/overlays/php74.nix"
 nixPkgs = ["php74", "php74Packages.composer", "nodejs-16_x", "yarn"]
