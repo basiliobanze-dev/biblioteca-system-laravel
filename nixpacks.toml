@@ -1,2 +1,2 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Packages.composer", "nodejs", "yarn"]
+nixPkgs = ["php74", "php74Packages.composer", "nodejs-16_x", "yarn"]
