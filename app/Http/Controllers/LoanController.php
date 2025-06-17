@@ -21,8 +21,7 @@ class LoanController extends Controller
     {
         // Automatically expires than 24 hour
         Loan::where('status', 'pending')
-        ->where('created_at', '<', now()->subHours(24)) 
-        // ->where('created_at', '<', now()->subMinutes(2))
+        ->where('created_at', '<', now()->subHours(24)) // ->where('created_at', '<', now()->subMinutes(2))
         ->update(['status' => 'expired']);
 
         $loans = Loan::with(['user', 'items.book'])
