@@ -88,7 +88,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        // $user->status = 'inativo';
+        //  $user->status = 'inativo';
         // $user->save();
 
         return redirect()->route('users.index')->with('success', 'Usuário Excluído com sucesso!');
